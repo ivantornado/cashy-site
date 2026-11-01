@@ -1,0 +1,8 @@
+[
+  { "label": "Home", "href": "/" },
+  { "label": "Base City", "href": "/base-city" },
+  { "label": "Printer", "href": "/printer" },
+  { "label": "Arcade", "href": "/arcade" },
+  { "label": "Roadmap", "href": "/roadmap" },
+  { "label": "Whitepaper", "href": "/roadmap", "placeholder": "TODO: point at the real whitepaper when it exists" }
+]

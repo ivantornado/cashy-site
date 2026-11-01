@@ -1,0 +1,30 @@
+[
+  {
+    "phase": "Line 1",
+    "title": "Doors open",
+    "colour": "cyan",
+    "items": [
+      { "text": "Dummy stop: website skeleton goes up", "status": "in-progress" },
+      { "text": "Dummy stop: final mascot art arrives", "status": "next" },
+      { "text": "Dummy stop: stickers and GIFs", "status": "next" }
+    ]
+  },
+  {
+    "phase": "Line 2",
+    "title": "City lights",
+    "colour": "magenta",
+    "items": [
+      { "text": "Dummy stop: Base City map", "status": "next" },
+      { "text": "Dummy stop: the Printer opens", "status": "next" }
+    ]
+  },
+  {
+    "phase": "Line 3",
+    "title": "Night shift",
+    "colour": "yellow",
+    "items": [
+      { "text": "Dummy stop: the Arcade opens", "status": "next" },
+      { "text": "Dummy stop: more of the city unlocks", "status": "next" }
+    ]
+  }
+]

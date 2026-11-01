@@ -1,0 +1,22 @@
+{
+  "baseCity": {
+    "title": "Base City",
+    "description": "Base City is coming soon.",
+    "line": "The streets are still being painted."
+  },
+  "printer": {
+    "title": "Printer",
+    "description": "The Printer is coming soon.",
+    "line": "Warming up. Mind the paper jam."
+  },
+  "arcade": {
+    "title": "Arcade",
+    "description": "The Arcade is coming soon.",
+    "line": "Machines are on their way up the stairs."
+  },
+  "roadmap": {
+    "title": "Roadmap",
+    "description": "Where Cashy is headed. Dummy roadmap for now.",
+    "line": "Dummy stops for now. The real timetable lands soon."
+  }
+}

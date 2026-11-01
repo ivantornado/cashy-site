@@ -1,0 +1,19 @@
+{
+  "_todo": "TODO: all copy here is dummy. TODO: final footage for the hero video. TODO: final art for the mascot.",
+  "hero": {
+    "videoSrc": "/video/hero.mp4",
+    "poster": "/video/hero-poster.jpg",
+    "title": "CASHY",
+    "tagline": "The doors are open. The city is awake.",
+    "scrollHint": "SCROLL"
+  },
+  "about": {
+    "headline": ["One banknote.", "One very quiet city."],
+    "support": "Cashy is a meme coin on Base. This is dummy copy, the real story lands soon."
+  },
+  "skyline": {
+    "word": "CASHY",
+    "label": "A neon city skyline at night under a blue moon. Cashy, a banknote in sunglasses and a leather jacket, stands on a rooftop ledge with his arms crossed.",
+    "mascot": "/art/cashy-standing.webp"
+  }
+}

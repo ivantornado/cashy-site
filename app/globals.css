@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #05070d;
+  --color-night: #0b1330;
+  --color-dusk: #141f52;
+  --color-base: #0052ff;
+  --color-violet: #8b3dff;
+  --color-magenta: #ff2bd6;
+  --color-cyan: #27e7ff;
+  --color-note: #a9dd8c;
+  --color-hoodie: #ffd21f;
+  --color-paper: #f2f4f8;
+  --color-mist: #aab4d4;
+
+  --font-display: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
+  --font-sans: var(--font-nunito-sans), system-ui, sans-serif;
+}
+
+html {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  scrollbar-gutter: stable;
+  scrollbar-color: var(--color-dusk) var(--color-ink);
+  scrollbar-width: thin;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+::selection {
+  background: var(--color-magenta);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-cyan);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Film grain over everything. A static tile, so it costs nothing per frame. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background-size: 128px 128px;
+}
+
+/* Cartoon lettering: an ink outline painted behind the fill. */
+.inked {
+  -webkit-text-stroke: 0.09em var(--color-ink);
+  paint-order: stroke fill;
+}
+
+.neon-word {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.9;
+  color: var(--color-paper);
+  -webkit-text-stroke: 0.035em var(--color-ink);
+  paint-order: stroke fill;
+  text-shadow:
+    -0.022em 0.012em 0 var(--color-cyan),
+    0.022em 0.012em 0 var(--color-magenta),
+    0 0.04em 0.28em rgb(255 43 214 / 0.6);
+}
+
+.btn-buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 2px solid var(--color-ink);
+  background: var(--color-base);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow:
+    0 0 0 1.5px rgb(255 255 255 / 0.28),
+    0 6px 18px rgb(0 82 255 / 0.55);
+  transition:
+    transform 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.btn-buy:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) {
+  .btn-buy:hover {
+    background: #1a66ff;
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 0 1.5px var(--color-cyan),
+      0 8px 24px rgb(39 231 255 / 0.45);
+  }
+}
+
+/* Slow rain over the skyline: one tall tile moved with transform only. */
+.rain {
+  position: absolute;
+  inset: -240px 0 0;
+  pointer-events: none;
+  opacity: 0.32;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg stroke='%23bfeaff' stroke-width='1.2' stroke-linecap='round'%3E%3Cpath d='M30 10l-5 26M92 58l-5 26M160 16l-5 26M214 92l-5 26M60 128l-5 26M130 150l-5 26M198 186l-5 26M16 204l-5 26'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 240px 240px;
+  animation: rain-fall 0.9s linear infinite;
+  will-change: transform;
+}
+
+@keyframes rain-fall {
+  to {
+    transform: translate3d(-46px, 240px, 0);
+  }
+}
+
+/* An old sign catching now and then. Only a couple of signs use it. */
+.neon-flicker {
+  animation: neon-flicker 9s steps(1) infinite;
+}
+
+.neon-flicker-late {
+  animation: neon-flicker 13s steps(1) 3s infinite;
+}
+
+@keyframes neon-flicker {
+  0%,
+  91%,
+  93%,
+  96%,
+  100% {
+    opacity: 1;
+  }
+  92%,
+  95% {
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rain,
+  .neon-flicker,
+  .neon-flicker-late {
+    animation: none;
+  }
+}

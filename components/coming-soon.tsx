@@ -1,28 +1,41 @@
 import Link from "next/link";
-import { FarSkyline, MidSkyline, Moon } from "@/components/home/skyline-art";
 import { BuyButton } from "@/components/ui/buy-button";
+import { asset } from "@/lib/utils";
 
-export function ComingSoon({ title, line }: { title: string; line: string }) {
+type ComingSoonProps = {
+  title: string;
+  line: string;
+  coming: string[];
+  mascot: string;
+};
+
+export function ComingSoon({ title, line, coming, mascot }: ComingSoonProps) {
   return (
-    <main className="relative isolate flex min-h-svh flex-col items-center overflow-hidden bg-gradient-to-b from-ink via-night to-[#3a1b6e] px-4 pb-16 pt-32 text-center md:pt-40">
-      <div aria-hidden className="absolute inset-0 -z-10">
-        <Moon className="absolute inset-0 size-full opacity-70" />
-        <FarSkyline className="absolute inset-0 size-full" />
-        <MidSkyline className="absolute inset-0 size-full" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
-      </div>
+    <main className="relative isolate flex min-h-svh flex-col overflow-hidden bg-gradient-to-b from-ink via-night to-ink px-4 pb-16 pt-28 md:px-8 md:pt-36">
+      <div className="mx-auto grid w-full max-w-[1200px] flex-1 items-center gap-10 md:grid-cols-[1.1fr_0.9fr] md:gap-6">
+        <div>
+          <h1 className="neon-word text-[clamp(3.5rem,13vw,9rem)]">{title}</h1>
+          <p className="neon-word mt-4 text-[clamp(2rem,6vw,3.75rem)]">Coming soon</p>
+          <p className="mt-8 max-w-lg text-lg font-semibold text-paper md:text-xl">{line}</p>
+          <ul className="mt-6 flex flex-col gap-2 text-mist">
+            {coming.map((item) => (
+              <li key={item} className="flex flex-wrap items-baseline gap-x-3">
+                <span>{item}</span>
+                <span className="font-display text-sm font-semibold text-cyan">Coming</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <BuyButton className="h-12 px-6 text-lg" />
+            <Link href="/" className="font-display text-lg font-medium text-paper underline decoration-cyan decoration-2 underline-offset-4 transition-colors duration-150 hover:text-cyan">
+              Back to the city
+            </Link>
+          </div>
+        </div>
 
-      <h1 className="neon-word text-[clamp(3.5rem,15vw,11rem)]">{title}</h1>
-      <p className="neon-flicker mt-8 rounded-xl border-[3px] border-magenta bg-ink/85 px-6 py-3 font-display text-2xl font-semibold tracking-wide text-magenta shadow-[0_4px_28px_rgb(255_43_214_/_0.55)] md:text-3xl">
-        Coming soon
-      </p>
-      <p className="mt-6 max-w-md text-lg font-semibold text-paper">{line}</p>
-
-      <div className="mt-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-4 pt-16">
-        <BuyButton className="h-12 px-6 text-lg" />
-        <Link href="/" className="font-display text-lg font-medium text-paper underline decoration-cyan decoration-2 underline-offset-4 transition-colors duration-150 hover:text-cyan">
-          Back to the city
-        </Link>
+        {/* TODO: final art. Temporary mascot, treatment baked by scripts/bake-mascot.py */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={asset(mascot)} alt="Cashy, a banknote in sunglasses and a leather jacket, crouching and pointing at you." width={979} height={982} className="mx-auto h-auto w-full max-w-[280px] md:max-w-[460px]" />
       </div>
     </main>
   );

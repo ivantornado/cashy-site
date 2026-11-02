@@ -1,22 +1,40 @@
 {
   "baseCity": {
     "title": "Base City",
-    "description": "Base City is coming soon.",
-    "line": "The streets are still being painted."
+    "description": "Base City went quiet. Cashy moves in to rebuild it, block by block.",
+    "line": "Base City went quiet. Cashy moves in to rebuild it, block by block. Hold Cashy. Get stocked.",
+    "coming": [
+      "The explorable city map",
+      "Printer Factory, Cashy Arcade and the Bank",
+      "Neighbours: an iPod store and a Delivery Guy depot"
+    ],
+    "mascot": "/art/cashy-crouching.webp"
   },
   "printer": {
     "title": "Printer",
-    "description": "The Printer is coming soon.",
-    "line": "Warming up. Mind the paper jam."
+    "description": "How Cashy works: 0.85% of every trade goes to holders, paid in MSTR stock, about daily.",
+    "line": "Cashy prints you MSTR. 0.85% of every trade goes to holders, paid in MSTR stock, about daily.",
+    "coming": [
+      "How it works and how to buy",
+      "Payday history",
+      "Print my receipt"
+    ],
+    "mascot": "/art/cashy-crouching.webp"
   },
   "arcade": {
     "title": "Arcade",
-    "description": "The Arcade is coming soon.",
-    "line": "Machines are on their way up the stairs."
+    "description": "Printer Panic, the Cashy game, is on its way.",
+    "line": "Printer Panic: catch the falling bills, dodge the rival coins. Machines are on their way up the stairs.",
+    "coming": [
+      "Printer Panic, the game",
+      "Weekly top 10 leaderboard",
+      "Past winners"
+    ],
+    "mascot": "/art/cashy-crouching.webp"
   },
   "roadmap": {
     "title": "Roadmap",
-    "description": "Where Cashy is headed. Dummy roadmap for now.",
-    "line": "Dummy stops for now. The real timetable lands soon."
+    "description": "Base City's metro: where Cashy is going, stop by stop.",
+    "line": "Base City's metro: where Cashy is going, stop by stop."
   }
 }

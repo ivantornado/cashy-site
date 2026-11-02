@@ -17,6 +17,7 @@ const statusLabels: Record<string, string> = {
   done: "Done",
   "in-progress": "In progress",
   next: "Next",
+  maybe: "Maybe",
 };
 
 export default function RoadmapPage() {
@@ -42,16 +43,19 @@ export default function RoadmapPage() {
                         aria-hidden
                         className={cn(
                           "absolute -left-[39px] top-1 size-5 rounded-full border-[3px] border-ink ring-[3px] md:-left-[55px]",
-                          item.status === "next" ? "bg-ink" : "bg-paper",
+                          item.status === "next" || item.status === "maybe" ? "bg-ink" : "bg-paper",
+                          item.status === "maybe" && "border-dashed",
                           section.colour === "cyan" && "ring-cyan",
                           section.colour === "magenta" && "ring-magenta",
                           section.colour === "yellow" && "ring-hoodie",
                         )}
                       />
-                      <span className="text-lg text-paper">{item.text}</span>
-                      <span className={cn("font-display text-sm font-semibold", item.status === "next" ? "text-mist" : colour.text)}>
+                      <span className="font-display text-sm font-semibold text-mist">{item.when}</span>
+                      <span className="text-lg font-semibold text-paper">{item.text}</span>
+                      <span className={cn("font-display text-sm font-semibold", item.status === "in-progress" || item.status === "done" ? colour.text : "text-mist")}>
                         {statusLabels[item.status]}
                       </span>
+                      <p className="basis-full text-base text-mist">{item.detail}</p>
                     </li>
                   ))}
                 </ul>

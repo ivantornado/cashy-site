@@ -162,21 +162,13 @@ export function Moon({ className }: LayerProps) {
           <stop offset="0.45" stopColor="#0052ff" stopOpacity="0.55" />
           <stop offset="1" stopColor="#0052ff" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="moon-face" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#2f7bff" />
-          <stop offset="0.6" stopColor="#0052ff" />
-          <stop offset="1" stopColor="#6a2bff" />
-        </linearGradient>
+        <clipPath id="moon-clip">
+          <circle cx="800" cy="330" r="215" />
+        </clipPath>
       </defs>
       <circle cx="800" cy="330" r="430" fill="url(#moon-glow)" />
-      <circle cx="800" cy="330" r="215" fill="url(#moon-face)" stroke={INK} strokeWidth="5" />
-      <path d="M640 215a215 215 0 0 1 120-98" stroke="#bcd6ff" strokeWidth="7" strokeLinecap="round" fill="none" opacity="0.8" />
-      <g fill="#0040cc" opacity="0.75">
-        <circle cx="880" cy="230" r="30" />
-        <circle cx="735" cy="400" r="20" />
-        <circle cx="905" cy="430" r="44" />
-        <circle cx="690" cy="285" r="13" />
-      </g>
+      <image href={asset("/art/feel-cash-logo.png")} x="585" y="115" width="430" height="430" clipPath="url(#moon-clip)" />
+      <circle cx="800" cy="330" r="215" fill="none" stroke={INK} strokeWidth="5" />
     </Canvas>
   );
 }

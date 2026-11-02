@@ -74,21 +74,20 @@ html.lenis body {
   font-weight: 400;
   line-height: 0.9;
   color: var(--color-paper);
-  /* Cynatar has one weight, so a paper-coloured stroke over the fill makes the letters fatter. */
-  -webkit-text-stroke: 0.045em var(--color-paper);
-  letter-spacing: 0.03em;
+  /* Cynatar has one thin weight. A same-colour stroke fattens it about 25%, the shadows redraw the ink outline. */
+  -webkit-text-stroke: 0.011em var(--color-paper);
   text-shadow:
     -0.022em 0.012em 0 var(--color-cyan),
     0.022em 0.012em 0 var(--color-magenta),
     0 0.04em 0.28em rgb(255 43 214 / 0.6),
-    0.04em 0 0 var(--color-ink),
-    -0.04em 0 0 var(--color-ink),
-    0 0.04em 0 var(--color-ink),
-    0 -0.04em 0 var(--color-ink),
-    0.03em 0.03em 0 var(--color-ink),
-    -0.03em 0.03em 0 var(--color-ink),
-    0.03em -0.03em 0 var(--color-ink),
-    -0.03em -0.03em 0 var(--color-ink);
+    0.03em 0 0 var(--color-ink),
+    -0.03em 0 0 var(--color-ink),
+    0 0.03em 0 var(--color-ink),
+    0 -0.03em 0 var(--color-ink),
+    0.022em 0.022em 0 var(--color-ink),
+    -0.022em 0.022em 0 var(--color-ink),
+    0.022em -0.022em 0 var(--color-ink),
+    -0.022em -0.022em 0 var(--color-ink);
 }
 
 .btn-buy {

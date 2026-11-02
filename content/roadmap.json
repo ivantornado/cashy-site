@@ -2,29 +2,121 @@
   {
     "phase": "Line 1",
     "title": "Doors open",
+    "period": "Month 1",
     "colour": "cyan",
     "items": [
-      { "text": "Dummy stop: website skeleton goes up", "status": "in-progress" },
-      { "text": "Dummy stop: final mascot art arrives", "status": "next" },
-      { "text": "Dummy stop: stickers and GIFs", "status": "next" }
+      {
+        "when": "W0",
+        "text": "Pre-launch",
+        "detail": "Website and lore, Base City map v1, stickers and GIFs, teasers on X, Payday bot tested, game build starts",
+        "status": "in-progress"
+      },
+      {
+        "when": "W1",
+        "text": "Launch",
+        "detail": "Launch on Feel.cash (MSTRc), first automated Payday post, Telegram opens, CoinGecko / CMC / Coinbase Wallet requests, weekly call #1",
+        "status": "next"
+      },
+      {
+        "when": "W2",
+        "text": "Community",
+        "detail": "Remix kit, meme contest #1 on X, ambassador program, Diamond Hands spotlight, weekly call #2",
+        "status": "next"
+      },
+      {
+        "when": "W3",
+        "text": "Game beta",
+        "detail": "Printer Panic beta on the Base App and the web, bounty board, weekly call #3",
+        "status": "next"
+      },
+      {
+        "when": "W4",
+        "text": "First season",
+        "detail": "Top 3 get an airdrop and a call slot, scores saved onchain on Base, month 1 recap, weekly call #4",
+        "status": "next"
+      }
     ]
   },
   {
     "phase": "Line 2",
     "title": "City lights",
+    "period": "Months 2 to 4",
     "colour": "magenta",
     "items": [
-      { "text": "Dummy stop: Base City map", "status": "next" },
-      { "text": "Dummy stop: the Printer opens", "status": "next" }
+      {
+        "when": "Month 2",
+        "text": "December",
+        "detail": "TikTok meme contest (#CashyPayday), holiday GIFs and advent calendar, lore season 1 with X polls, Printer Panic on Telegram",
+        "status": "next"
+      },
+      {
+        "when": "Month 2",
+        "text": "Crossover: buy an iPod for cash",
+        "detail": "First crossover with IPOD on Feel.cash",
+        "status": "next"
+      },
+      {
+        "when": "Month 3",
+        "text": "Feel.cash hype man",
+        "detail": "Ecosystem threads and launch spotlights, Cashy Cards (earned, not bought), holder ranks designed",
+        "status": "next"
+      },
+      {
+        "when": "Month 3",
+        "text": "Crossover: Delivery Guy delivers Cashy",
+        "detail": "Second crossover, exploring a cross-pairing",
+        "status": "next"
+      },
+      {
+        "when": "Month 4",
+        "text": "The Bank opens",
+        "detail": "Holder ranks live, Get on the bill pilot, proposal to use Cashy inside Feel.cash, Base builder program application",
+        "status": "next"
+      }
     ]
   },
   {
     "phase": "Line 3",
     "title": "Night shift",
+    "period": "Month 4 onwards",
     "colour": "yellow",
     "items": [
-      { "text": "Dummy stop: the Arcade opens", "status": "next" },
-      { "text": "Dummy stop: more of the city unlocks", "status": "next" }
+      {
+        "when": "Long term",
+        "text": "Coinbase listing",
+        "detail": "Apply to the Coinbase listing roadmap",
+        "status": "next"
+      },
+      {
+        "when": "Long term",
+        "text": "Official Feel.cash mascot",
+        "detail": "Earn the official mascot role",
+        "status": "next"
+      },
+      {
+        "when": "Long term",
+        "text": "AI Cashy",
+        "detail": "Ask Cashy bot on Telegram: Payday stats, tips",
+        "status": "next"
+      },
+      {
+        "when": "Long term",
+        "text": "Annual Payday event",
+        "detail": "A yearly celebration for holders",
+        "status": "next"
+      },
+      {
+        "when": "Long term",
+        "text": "Physical Cashy notes",
+        "detail": "Serial-numbered notes and cards from #000001, QR bills at Base and Ethereum events",
+        "status": "maybe"
+      },
+      {
+        "when": "Long term",
+        "text": "Plush, merch, mini-series",
+        "detail": "Depending on growth",
+        "status": "maybe"
+      }
     ]
   }
 ]

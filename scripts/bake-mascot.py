@@ -13,9 +13,13 @@ from PIL import Image, ImageChops, ImageFilter
 
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "public/reference/mascot-source.webp"
-OUT = ROOT / "public/art/cashy-standing.webp"
+ART = ROOT / "public/art"
 
-STANDING_X = (121, 695)  # the source sheet holds two poses side by side
+# The source sheet holds two poses side by side.
+POSES = {
+    "cashy-standing.webp": (121, 695),
+    "cashy-crouching.webp": (870, 1780),
+}
 PAD = 48
 CYAN = (39, 231, 255)
 MAGENTA = (255, 43, 214)
@@ -34,37 +38,45 @@ def rim(alpha, dx, width):
 
 
 sheet = Image.open(SOURCE).convert("RGBA")
-pose = sheet.crop((STANDING_X[0], 0, STANDING_X[1], sheet.height))
-pose = pose.crop(pose.getbbox())
 
-canvas = Image.new("RGBA", (pose.width + PAD * 2, pose.height + PAD * 2), (0, 0, 0, 0))
-canvas.paste(pose, (PAD, PAD))
-alpha = canvas.getchannel("A")
 
-# Night grade: cool him down, darker towards the boots.
-night = Image.new("RGBA", canvas.size, (*NIGHT, 255))
-ramp = Image.linear_gradient("L").resize(canvas.size)
-ramp = ramp.point(lambda v: int(30 + v * 0.26))
-graded = Image.composite(night, canvas, ramp)
-graded.putalpha(alpha)
+def bake(name, x_range):
+    pose = sheet.crop((x_range[0], 0, x_range[1], sheet.height))
+    out = ART / name
+    pose = pose.crop(pose.getbbox())
 
-# Rim lights: screen the colour over the contour, inside the silhouette only.
-left = rim(alpha, 9, 1.2).point(lambda v: min(255, int(v * 1.0)))
-right = rim(alpha, -9, 1.2).point(lambda v: min(255, int(v * 1.0)))
-lit = ImageChops.screen(graded.convert("RGB"), Image.composite(Image.new("RGB", canvas.size, CYAN), Image.new("RGB", canvas.size, 0), left))
-lit = ImageChops.screen(lit, Image.composite(Image.new("RGB", canvas.size, MAGENTA), Image.new("RGB", canvas.size, 0), right))
-lit.putalpha(alpha)
+    canvas = Image.new("RGBA", (pose.width + PAD * 2, pose.height + PAD * 2), (0, 0, 0, 0))
+    canvas.paste(pose, (PAD, PAD))
+    alpha = canvas.getchannel("A")
 
-# Outer glow, offset to each side so the two colours read as light sources.
-glow_left = ImageChops.offset(alpha, -8, 0).filter(ImageFilter.GaussianBlur(16)).point(lambda v: int(v * 0.55))
-glow_right = ImageChops.offset(alpha, 8, 0).filter(ImageFilter.GaussianBlur(16)).point(lambda v: int(v * 0.55))
-result = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
-result = Image.alpha_composite(result, tint(glow_left, CYAN))
-result = Image.alpha_composite(result, tint(glow_right, MAGENTA))
-result = Image.alpha_composite(result, lit)
+    # Night grade: cool him down, darker towards the boots.
+    night = Image.new("RGBA", canvas.size, (*NIGHT, 255))
+    ramp = Image.linear_gradient("L").resize(canvas.size)
+    ramp = ramp.point(lambda v: int(30 + v * 0.26))
+    graded = Image.composite(night, canvas, ramp)
+    graded.putalpha(alpha)
 
-result.save(OUT, "WEBP", quality=90, method=6)
-print(OUT.name, result.size, f"{OUT.stat().st_size // 1024}KB")
+    # Rim lights: screen the colour over the contour, inside the silhouette only.
+    left = rim(alpha, 9, 1.2).point(lambda v: min(255, int(v * 1.0)))
+    right = rim(alpha, -9, 1.2).point(lambda v: min(255, int(v * 1.0)))
+    lit = ImageChops.screen(graded.convert("RGB"), Image.composite(Image.new("RGB", canvas.size, CYAN), Image.new("RGB", canvas.size, 0), left))
+    lit = ImageChops.screen(lit, Image.composite(Image.new("RGB", canvas.size, MAGENTA), Image.new("RGB", canvas.size, 0), right))
+    lit.putalpha(alpha)
+
+    # Outer glow, offset to each side so the two colours read as light sources.
+    glow_left = ImageChops.offset(alpha, -8, 0).filter(ImageFilter.GaussianBlur(16)).point(lambda v: int(v * 0.55))
+    glow_right = ImageChops.offset(alpha, 8, 0).filter(ImageFilter.GaussianBlur(16)).point(lambda v: int(v * 0.55))
+    result = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+    result = Image.alpha_composite(result, tint(glow_left, CYAN))
+    result = Image.alpha_composite(result, tint(glow_right, MAGENTA))
+    result = Image.alpha_composite(result, lit)
+
+    result.save(out, "WEBP", quality=90, method=6)
+    print(out.name, result.size, f"{out.stat().st_size // 1024}KB")
+
+
+for pose_name, pose_x in POSES.items():
+    bake(pose_name, pose_x)
 
 # Grain tile for the whole site: light specks on transparent, small and tileable.
 import random

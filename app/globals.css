@@ -13,8 +13,9 @@
   --color-paper: #f2f4f8;
   --color-mist: #aab4d4;
 
-  --font-display: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
-  --font-sans: var(--font-nunito-sans), system-ui, sans-serif;
+  --font-heading: var(--font-cynatar), system-ui, sans-serif;
+  --font-display: var(--font-noto-sans), system-ui, sans-serif;
+  --font-sans: var(--font-noto-sans), system-ui, sans-serif;
 }
 
 html {
@@ -69,8 +70,8 @@ html.lenis body {
 }
 
 .neon-word {
-  font-family: var(--font-display);
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-weight: 400;
   line-height: 0.9;
   color: var(--color-paper);
   -webkit-text-stroke: 0.035em var(--color-ink);

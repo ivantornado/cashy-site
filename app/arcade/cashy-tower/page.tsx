@@ -9,8 +9,10 @@ export const metadata: Metadata = { title: game.title, description };
 
 export default function CashyTowerPage() {
   return (
-    <main className="min-h-svh bg-gradient-to-b from-ink via-night to-ink px-4 pb-16 pt-24 md:px-8 md:pt-28">
-      <div className="mx-auto flex w-full max-w-[1200px] flex-col gap-5">
+    <main className="min-h-svh bg-gradient-to-b from-ink via-night to-ink px-4 pb-16 pt-[4.75rem] md:px-8 md:pt-[5.75rem]">
+      <div className="mx-auto flex w-full max-w-[1500px] flex-col gap-5">
+        <GameFrame src={game.embedUrl} title={game.title} />
+
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
           <h1 className="neon-word text-[clamp(2.25rem,6vw,3.5rem)]">{game.title}</h1>
           <Link href="/arcade" className="font-display text-lg font-medium text-paper underline decoration-cyan decoration-2 underline-offset-4 transition-colors duration-150 hover:text-cyan">
@@ -18,10 +20,8 @@ export default function CashyTowerPage() {
           </Link>
         </div>
 
-        <GameFrame src={game.embedUrl} title={game.title} />
-
-        <p className="mx-auto max-w-xl text-center text-mist">{game.hint}</p>
-        <p className="mx-auto max-w-xl text-center text-sm text-mist/80 lg:hidden">{game.phoneNote}</p>
+        <p className="max-w-xl text-mist">{game.hint}</p>
+        <p className="max-w-xl text-sm text-mist/80 lg:hidden">{game.phoneNote}</p>
       </div>
     </main>
   );

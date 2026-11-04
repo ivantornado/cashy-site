@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Bakes the neon scene treatment onto the mascot so he sits in the skyline.
 
-Nothing is redrawn: the source pixels get a cool night grade, cyan and magenta
+Nothing is redrawn: the source pixels get a cool night grade, cyan and Base blue
 rim lights on his outer contour, and a soft outer glow. Baking it here means the
 browser never runs a filter on him while the parallax is moving.
 
@@ -22,7 +22,7 @@ POSES = {
 }
 PAD = 48
 CYAN = (39, 231, 255)
-MAGENTA = (255, 43, 214)
+BLUE = (2, 79, 246)
 NIGHT = (11, 19, 48)
 
 
@@ -60,7 +60,7 @@ def bake(name, x_range):
     left = rim(alpha, 9, 1.2).point(lambda v: min(255, int(v * 1.0)))
     right = rim(alpha, -9, 1.2).point(lambda v: min(255, int(v * 1.0)))
     lit = ImageChops.screen(graded.convert("RGB"), Image.composite(Image.new("RGB", canvas.size, CYAN), Image.new("RGB", canvas.size, 0), left))
-    lit = ImageChops.screen(lit, Image.composite(Image.new("RGB", canvas.size, MAGENTA), Image.new("RGB", canvas.size, 0), right))
+    lit = ImageChops.screen(lit, Image.composite(Image.new("RGB", canvas.size, BLUE), Image.new("RGB", canvas.size, 0), right))
     lit.putalpha(alpha)
 
     # Outer glow, offset to each side so the two colours read as light sources.
@@ -68,7 +68,7 @@ def bake(name, x_range):
     glow_right = ImageChops.offset(alpha, 8, 0).filter(ImageFilter.GaussianBlur(16)).point(lambda v: int(v * 0.55))
     result = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
     result = Image.alpha_composite(result, tint(glow_left, CYAN))
-    result = Image.alpha_composite(result, tint(glow_right, MAGENTA))
+    result = Image.alpha_composite(result, tint(glow_right, BLUE))
     result = Image.alpha_composite(result, lit)
 
     result.save(out, "WEBP", quality=90, method=6)

@@ -6,7 +6,7 @@ import site from "@/content/site.json";
 
 export function SiteFooter() {
   const socials = [
-    { label: "X", href: site.xUrl },
+    { label: site.followLabel, href: site.xUrl },
     { label: "Telegram", href: site.telegramUrl },
   ].filter((social) => social.href);
 

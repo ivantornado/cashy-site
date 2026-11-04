@@ -72,7 +72,7 @@ export function SiteHeader() {
                     aria-current={active ? "page" : undefined}
                     className={cn(
                       "rounded-full px-3.5 py-2 font-display text-[17px] font-medium text-paper/85 transition-colors duration-150 hover:text-cyan",
-                      active && "text-cyan underline decoration-magenta decoration-[3px] underline-offset-[7px]",
+                      active && "text-cyan underline decoration-base decoration-[3px] underline-offset-[7px]",
                     )}
                   >
                     {item.label}

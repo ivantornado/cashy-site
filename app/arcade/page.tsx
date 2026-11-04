@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BuyButton } from "@/components/ui/buy-button";
+import { FollowLink } from "@/components/ui/follow-link";
 import pages from "@/content/pages.json";
 import { asset } from "@/lib/utils";
 
@@ -17,8 +18,8 @@ export default function ArcadePage() {
           <p className="mt-6 max-w-lg text-lg font-semibold text-paper md:text-xl">{line}</p>
 
           {/* The cabinet's sign: one game for now, with the way in. */}
-          <section aria-labelledby="game-title" className="mt-8 max-w-xl rounded-2xl border-[3px] border-magenta bg-ink/85 p-6 shadow-[0_4px_36px_rgb(255_43_214_/_0.45)] md:p-8">
-            <p className="neon-flicker font-display text-sm font-semibold tracking-widest text-magenta uppercase">{game.tag}</p>
+          <section aria-labelledby="game-title" className="mt-8 max-w-xl rounded-2xl border-[3px] border-base bg-ink/85 p-6 shadow-[0_4px_36px_rgb(2_79_246_/_0.5)] md:p-8">
+            <p className="neon-flicker inline-block rounded-md bg-base px-2.5 py-1 font-display text-sm font-semibold tracking-widest text-paper uppercase">{game.tag}</p>
             <h2 id="game-title" className="neon-word mt-2 text-[clamp(2.5rem,8vw,4.5rem)]">
               {game.title}
             </h2>
@@ -39,6 +40,7 @@ export default function ArcadePage() {
 
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
             <BuyButton className="h-12 px-6 text-lg" />
+            <FollowLink className="h-12 px-6 text-lg" />
             <Link href="/" className="font-display text-lg font-medium text-paper underline decoration-cyan decoration-2 underline-offset-4 transition-colors duration-150 hover:text-cyan">
               Back to the city
             </Link>

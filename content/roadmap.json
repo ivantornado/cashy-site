@@ -41,7 +41,7 @@
     "phase": "Line 2",
     "title": "City lights",
     "period": "Months 2 to 4",
-    "colour": "magenta",
+    "colour": "blue",
     "items": [
       {
         "when": "Month 2",
@@ -79,7 +79,7 @@
     "phase": "Line 3",
     "title": "Night shift",
     "period": "Month 4 onwards",
-    "colour": "yellow",
+    "colour": "pink",
     "items": [
       {
         "when": "Long term",

@@ -361,13 +361,13 @@ export default function MetroHero({
         }}
       />
 
-      {/* Neon wash: Base blue from the top, magenta from the street below. */}
+      {/* Neon wash: Base blue from the top and from the street below. */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(180deg, rgba(5,7,13,0.5), rgba(0,82,255,0.1) 30%, rgba(139,61,255,0.08) 62%, rgba(255,43,214,0.2) 88%, rgba(5,7,13,0.7))",
+            "linear-gradient(180deg, rgba(5,7,13,0.5), rgba(2,79,246,0.1) 30%, rgba(139,61,255,0.08) 62%, rgba(2,79,246,0.22) 88%, rgba(5,7,13,0.7))",
           pointerEvents: "none",
         }}
       />
@@ -415,7 +415,6 @@ export default function MetroHero({
           }}
         >
           <p
-            className="inked"
             style={{
               margin: 0,
               maxWidth: "18ch",
@@ -484,7 +483,7 @@ export default function MetroHero({
           style={{
             height: "100%",
             width: "100%",
-            background: "linear-gradient(90deg, var(--color-cyan), var(--color-magenta))",
+            background: "linear-gradient(90deg, var(--color-cyan), var(--color-base))",
             transform: "scaleX(0)",
             transformOrigin: "left center",
           }}

@@ -3,8 +3,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { CSS2DObject, CSS2DRenderer } from "three/examples/jsm/renderers/CSS2DRenderer.js";
 
 /*
- * Base City in 3D. Based on the proof of concept by Cashy's friend (single HTML file, three.js),
- * rebuilt as a module: night palette, tidy shutdown, scoped keyboard, copy from content/base-city.json.
+ * Base City in 3D. Based on the proof of concept by Cashy's friend (single HTML file, three.js), keeping its
+ * flat Base-blue look, rebuilt as a module: tidy shutdown, scoped keyboard, copy from content/base-city.json.
  * Everything is drawn in code, no image files.
  */
 
@@ -35,26 +35,27 @@ export type BaseCityScene = {
   dispose(): void;
 };
 
-// Night palette: the site's ink and navy, with the skyline's cyan, magenta and yellow as the lights.
+// The friend's flat look: Base-blue sky and ground, white buildings with pale windows, blue outlines.
+// Their blue is #0000ff; the site's main blue is #024ff6. Change BLUE to switch the city to the site's blue.
+const BLUE = 0x0000ff;
 const COL = {
-  sky: 0x070a1c,
-  ground: 0x05070d,
-  platform: 0x0d1433,
-  platformEdge: 0x2a3f9a,
-  street: 0x16224f,
-  gridMain: 0x2a3f9a,
-  gridFine: 0x1a2766,
-  roof: 0x1d2a66,
-  edge: 0x27e7ff,
-  light: 0xdfe6ff,
-  glow: 0x27e7ff,
-  beacon: 0xff2bd6,
-  ghost: 0x7fa0ff,
-  lawn: 0x0e3b4a,
-  tree: 0x58d58a,
-  plot: 0x27e7ff,
+  sky: BLUE,
+  ground: 0x0606ff,
+  platform: 0x2121ff,
+  platformEdge: 0x8080ff,
+  street: 0x3b3bff,
+  gridMain: 0x5c5cff,
+  gridFine: 0x4646ff,
+  roof: 0xe6e6ff,
+  edge: BLUE,
+  light: 0xffffff,
+  glow: 0x8c8cff,
+  beacon: 0xffffff,
+  ghost: 0xffffff,
+  lawn: 0x4d4dff,
+  tree: 0xffffff,
+  plot: 0xffffff,
 };
-const WINDOW_LIGHTS = ["#27e7ff", "#ffd21f", "#ff2bd6", "#cfe0ff"];
 
 const PLAT = 0.6; // platform top
 const HALF = 25; // half size of the city platform
@@ -91,41 +92,18 @@ function canvasTex(w: number, h: number, draw: (g: CanvasRenderingContext2D, w: 
   return t;
 }
 
-/** Facade tile: dark wall, dark windows and a few lit ones. The lit ones also go into a glow map. */
-function facadeTextures() {
-  const size = 128;
-  const rand = seeded(8453);
-  const base = document.createElement("canvas");
-  const glow = document.createElement("canvas");
-  base.width = base.height = glow.width = glow.height = size;
-  const b = base.getContext("2d")!;
-  const g = glow.getContext("2d")!;
-  b.fillStyle = "#141d4a";
-  b.fillRect(0, 0, size, size);
-  g.fillStyle = "#000";
-  g.fillRect(0, 0, size, size);
-  for (const top of [16, 80]) {
-    b.fillStyle = "rgba(39, 231, 255, 0.22)";
-    b.fillRect(0, top - 16, size, 2);
-    for (let x = 5; x < size; x += 16) {
-      const lit = rand() < 0.3;
-      const colour = WINDOW_LIGHTS[Math.floor(rand() * WINDOW_LIGHTS.length)];
-      b.fillStyle = lit ? colour : "#0a1030";
-      b.fillRect(x, top, 10, 34);
-      if (lit) {
-        g.fillStyle = colour;
-        g.fillRect(x, top, 10, 34);
-      }
-    }
-  }
-  const make = (canvas: HTMLCanvasElement) => {
-    const t = new THREE.CanvasTexture(canvas);
-    t.colorSpace = THREE.SRGBColorSpace;
-    t.anisotropy = 4;
-    t.wrapS = t.wrapT = THREE.RepeatWrapping;
-    return t;
-  };
-  return { map: make(base), glow: make(glow) };
+/** Facade tile: white wall, pale windows and a thin blue line, as in the original. */
+function facadeTexture() {
+  const t = canvasTex(64, 64, (g) => {
+    g.fillStyle = "#ffffff";
+    g.fillRect(0, 0, 64, 64);
+    g.fillStyle = "#dcdcff";
+    for (let x = 5; x < 64; x += 16) g.fillRect(x, 16, 10, 34);
+    g.fillStyle = "rgba(0,0,255,0.35)";
+    g.fillRect(0, 0, 64, 2);
+  });
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  return t;
 }
 
 export function createBaseCity(host: HTMLElement, content: SceneContent, hooks: SceneHooks): BaseCityScene {
@@ -178,8 +156,8 @@ export function createBaseCity(host: HTMLElement, content: SceneContent, hooks: 
   controls.maxPolarAngle = Math.PI * 0.495;
   controls.autoRotateSpeed = 0.45;
 
-  scene.add(new THREE.HemisphereLight(0x9db4ff, 0x0b1030, 0.95));
-  const sun = new THREE.DirectionalLight(0xbcd0ff, 1.25);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x2a2aff, 1.15));
+  const sun = new THREE.DirectionalLight(0xffffff, 1.5);
   sun.position.set(30, 60, 20);
   sun.castShadow = true;
   sun.shadow.mapSize.set(coarse ? 1024 : 2048, coarse ? 1024 : 2048);
@@ -217,31 +195,28 @@ export function createBaseCity(host: HTMLElement, content: SceneContent, hooks: 
   scene.add(grid);
 
   // ---------- Materials and helpers ----------
-  const facade = facadeTextures();
+  const facade = facadeTexture();
   const sideCache = new Map<string, THREE.MeshStandardMaterial>();
   function sideMat(u: number, v: number) {
-    // The tile covers two floors and two rows of windows, so half as many repeats as before.
-    const a = Math.max(1, Math.round(u / 2));
-    const b = Math.max(1, Math.round(v / 2));
+    const a = Math.max(1, Math.round(u));
+    const b = Math.max(1, Math.round(v));
     const key = `${a}x${b}`;
     let mat = sideCache.get(key);
     if (!mat) {
-      const map = facade.map.clone();
-      const glow = facade.glow.clone();
-      map.needsUpdate = glow.needsUpdate = true;
+      const map = facade.clone();
+      map.needsUpdate = true;
       map.repeat.set(a, b);
-      glow.repeat.set(a, b);
-      mat = new THREE.MeshStandardMaterial({ map, emissive: 0xffffff, emissiveMap: glow, emissiveIntensity: 0.9, roughness: 0.55 });
+      mat = new THREE.MeshStandardMaterial({ map, roughness: 0.55 });
       sideCache.set(key, mat);
     }
     return mat;
   }
   const topMat = new THREE.MeshStandardMaterial({ color: COL.roof, roughness: 0.6 });
-  const plainLight = new THREE.MeshStandardMaterial({ color: COL.light, roughness: 0.5, emissive: 0x2a3566 });
-  const edgeMat = new THREE.LineBasicMaterial({ color: COL.edge, transparent: true, opacity: 0.45 });
+  const plainLight = new THREE.MeshStandardMaterial({ color: COL.light, roughness: 0.5 });
+  const edgeMat = new THREE.LineBasicMaterial({ color: COL.edge });
   const glowMat = new THREE.MeshBasicMaterial({ color: COL.glow });
-  const ghostMat = new THREE.MeshBasicMaterial({ color: COL.ghost, transparent: true, opacity: 0.12, depthWrite: false });
-  const ghostEdge = new THREE.LineBasicMaterial({ color: COL.ghost, transparent: true, opacity: 0.5 });
+  const ghostMat = new THREE.MeshBasicMaterial({ color: COL.ghost, transparent: true, opacity: 0.1, depthWrite: false });
+  const ghostEdge = new THREE.LineBasicMaterial({ color: COL.ghost, transparent: true, opacity: 0.45 });
 
   function block(w: number, h: number, d: number, windows = true) {
     const geo = new THREE.BoxGeometry(w, h, d);
@@ -360,15 +335,12 @@ export function createBaseCity(host: HTMLElement, content: SceneContent, hooks: 
   place(printer, -6, 0, "printer", [2, 3]);
   roof(printer, 0.8, 0.8, 3, 0.6);
 
-  // Cashy Arcade: its sign now says Cashy Tower and flickers like the site's neon.
+  // Cashy Arcade: its sign now says Cashy Tower.
   const arcade = new THREE.Group();
   const signMat = new THREE.MeshBasicMaterial({
     map: canvasTex(256, 64, (g, w, h) => {
-      g.fillStyle = "#1a0820";
+      g.fillStyle = "#0000ff";
       g.fillRect(0, 0, w, h);
-      g.strokeStyle = "#ff2bd6";
-      g.lineWidth = 4;
-      g.strokeRect(2, 2, w - 4, h - 4);
       g.fillStyle = "#ffffff";
       g.font = "bold 30px Arial, sans-serif";
       g.textAlign = "center";
@@ -404,13 +376,13 @@ export function createBaseCity(host: HTMLElement, content: SceneContent, hooks: 
     const body = block(2.4, 4.2, 1.1, false);
     body.position.y = 2.5;
     ipod.add(body);
-    const screen = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 1.4), new THREE.MeshBasicMaterial({ color: 0x27e7ff }));
+    const screen = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 1.4), new THREE.MeshBasicMaterial({ color: 0x5c5cff }));
     screen.position.set(0, 3.35, 0.56);
     ipod.add(screen);
-    const wheel = new THREE.Mesh(new THREE.RingGeometry(0.3, 0.75, 40), new THREE.MeshStandardMaterial({ color: 0x9fb0ff, side: THREE.DoubleSide }));
+    const wheel = new THREE.Mesh(new THREE.RingGeometry(0.3, 0.75, 40), new THREE.MeshStandardMaterial({ color: 0xe6e6ff, side: THREE.DoubleSide }));
     wheel.position.set(0, 1.75, 0.56);
     ipod.add(wheel);
-    const rim = new THREE.Mesh(new THREE.RingGeometry(0.73, 0.77, 40), new THREE.MeshBasicMaterial({ color: 0x27e7ff, side: THREE.DoubleSide }));
+    const rim = new THREE.Mesh(new THREE.RingGeometry(0.73, 0.77, 40), new THREE.MeshBasicMaterial({ color: BLUE, side: THREE.DoubleSide }));
     rim.position.set(0, 1.75, 0.565);
     ipod.add(rim);
     ipod.rotation.y = Math.PI / 4;
@@ -425,7 +397,7 @@ export function createBaseCity(host: HTMLElement, content: SceneContent, hooks: 
     const hall = block(4.4, 2.3, 3.2);
     hall.position.set(0, 1.15, -0.5);
     depot.add(hall);
-    const doorMat = new THREE.MeshStandardMaterial({ color: 0x9fb0ff });
+    const doorMat = new THREE.MeshStandardMaterial({ color: 0xc7c7ff });
     for (const x of [-1.1, 1.1]) {
       const door = new THREE.Mesh(new THREE.PlaneGeometry(1.5, 1.5), doorMat);
       door.position.set(x, 0.78, 1.11);
@@ -586,7 +558,7 @@ export function createBaseCity(host: HTMLElement, content: SceneContent, hooks: 
   }
 
   // ---------- Walking bots ----------
-  const botMat = new THREE.MeshStandardMaterial({ color: COL.light, roughness: 0.45, emissive: 0x2a3566 });
+  const botMat = new THREE.MeshStandardMaterial({ color: COL.light, roughness: 0.45 });
   const botGeo = new THREE.CapsuleGeometry(0.15, 0.34, 4, 8);
   const headGeo = new THREE.SphereGeometry(0.14, 12, 10);
   const bots: Bot[] = [];
@@ -930,14 +902,14 @@ export function createBaseCity(host: HTMLElement, content: SceneContent, hooks: 
 
   // ---------- Payday: stock certificates thrown from the tower ----------
   const certTex = canvasTex(160, 96, (g, w, h) => {
-    g.fillStyle = "#f2f4f8";
+    g.fillStyle = "#ffffff";
     g.fillRect(0, 0, w, h);
-    g.strokeStyle = "#0052ff";
+    g.strokeStyle = "#0000ff";
     g.lineWidth = 6;
     g.strokeRect(5, 5, w - 10, h - 10);
     g.lineWidth = 2;
     g.strokeRect(14, 14, w - 28, h - 28);
-    g.fillStyle = "#0052ff";
+    g.fillStyle = "#0000ff";
     g.font = "bold 34px Arial, sans-serif";
     g.textAlign = "center";
     g.textBaseline = "middle";
@@ -948,7 +920,7 @@ export function createBaseCity(host: HTMLElement, content: SceneContent, hooks: 
   const certGeo = new THREE.PlaneGeometry(0.95, 0.57);
   const certs: Cert[] = [];
   for (let k = 0; k < 90; k++) {
-    const m = new THREE.Mesh(certGeo, new THREE.MeshStandardMaterial({ map: certTex, side: THREE.DoubleSide, transparent: true, roughness: 0.6, emissive: 0x1a2040 }));
+    const m = new THREE.Mesh(certGeo, new THREE.MeshStandardMaterial({ map: certTex, side: THREE.DoubleSide, transparent: true, roughness: 0.6 }));
     m.castShadow = true;
     m.visible = false;
     scene.add(m);
@@ -1230,7 +1202,7 @@ export function createBaseCity(host: HTMLElement, content: SceneContent, hooks: 
 
     flash = Math.max(0, flash - dt * 0.8);
     beacon.scale.setScalar(1 + flash * 1.6 + (reduceMotion ? 0 : 0.15 * Math.sin(t * 3)));
-    glowMat.color.setRGB(0.15 + 0.85 * flash, 0.9 + 0.1 * flash, 1);
+    glowMat.color.setRGB(0.55 + 0.45 * flash, 0.55 + 0.45 * flash, 1);
     signMat.opacity = reduceMotion ? 1 : Math.sin(t * 5) > -0.9 ? 1 : 0.5;
 
     // The tower throws a few certificates now and then so the city feels alive. No numbers: those are for the demo button.
@@ -1288,8 +1260,7 @@ export function createBaseCity(host: HTMLElement, content: SceneContent, hooks: 
         free(m);
       }
     });
-    free(facade.map);
-    free(facade.glow);
+    free(facade);
     renderer.dispose();
     renderer.forceContextLoss();
     renderer.domElement.remove();

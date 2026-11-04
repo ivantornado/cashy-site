@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BuyButton } from "@/components/ui/buy-button";
+import { FollowLink } from "@/components/ui/follow-link";
 import { asset } from "@/lib/utils";
 
 type ComingSoonProps = {
@@ -27,6 +28,7 @@ export function ComingSoon({ title, line, coming, mascot }: ComingSoonProps) {
           </ul>
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
             <BuyButton className="h-12 px-6 text-lg" />
+            <FollowLink className="h-12 px-6 text-lg" />
             <Link href="/" className="font-display text-lg font-medium text-paper underline decoration-cyan decoration-2 underline-offset-4 transition-colors duration-150 hover:text-cyan">
               Back to the city
             </Link>

@@ -18,5 +18,24 @@
     "word": "CASHY",
     "label": "A neon city skyline at night under a blue moon. Cashy, a banknote in sunglasses and a leather jacket, stands on a rooftop ledge with his arms crossed.",
     "mascot": "/art/cashy-standing.webp"
+  },
+  "hype": {
+    "eyebrow": "The Base Note · 8453",
+    "title": "Base City is waking up",
+    "lede": "Cashy moved in to switch the lights back on. Every trade on Feel.cash keeps the city running, and the fees are shared with holders in MSTR stock.",
+    "points": [
+      {
+        "title": "Every trade prints",
+        "text": "0.85% of every Cashy trade goes to holders, paid in MSTR stock."
+      },
+      {
+        "title": "Payday is MSTR day",
+        "text": "Payouts go out about daily. Hold at least 100,000 CASHY to qualify."
+      },
+      {
+        "title": "Built on Base",
+        "text": "Launched on Feel.cash and paired with MSTRc. Where people meet stocks, on Base."
+      }
+    ]
   }
 }

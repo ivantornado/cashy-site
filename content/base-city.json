@@ -75,7 +75,7 @@
     "arcade": {
       "name": "Cashy Arcade",
       "tag": "Now playing",
-      "text": "Cashy Tower is open: run, bounce off the walls and chain combos up 400 floors. How high can you go?",
+      "text": "Cashy Tower is open: run, bounce off the walls and chain combos. How high can you go?",
       "href": "/arcade",
       "hrefLabel": "Open the Arcade"
     },

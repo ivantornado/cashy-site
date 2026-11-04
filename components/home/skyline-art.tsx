@@ -7,8 +7,8 @@ import { asset } from "@/lib/utils";
 
 const INK = "#04060f";
 const CYAN = "#27e7ff";
-const MAGENTA = "#ff2bd6";
-const YELLOW = "#ffd21f";
+const BLUE = "#024ff6";
+const PINK = "#ff2bd6";
 const GREEN = "#a9dd8c";
 const VIOLET = "#8b3dff";
 
@@ -93,7 +93,7 @@ function Buildings({ buildings, style, seed }: { buildings: Building[]; style: S
       {style.rim && (
         <>
           <path d={rimLeft} stroke={CYAN} strokeWidth="2.5" strokeOpacity="0.7" fill="none" />
-          <path d={rimTop} stroke={MAGENTA} strokeWidth="2.5" strokeOpacity="0.85" fill="none" />
+          <path d={rimTop} stroke={BLUE} strokeWidth="2.5" strokeOpacity="0.85" fill="none" />
         </>
       )}
     </g>
@@ -159,8 +159,8 @@ export function Moon({ className }: LayerProps) {
     <Canvas className={className}>
       <defs>
         <radialGradient id="moon-glow">
-          <stop offset="0.45" stopColor="#0052ff" stopOpacity="0.55" />
-          <stop offset="1" stopColor="#0052ff" stopOpacity="0" />
+          <stop offset="0.45" stopColor="#024ff6" stopOpacity="0.55" />
+          <stop offset="1" stopColor="#024ff6" stopOpacity="0" />
         </radialGradient>
         <clipPath id="moon-clip">
           <circle cx="800" cy="330" r="215" />
@@ -179,8 +179,8 @@ export function FarSkyline({ className }: LayerProps) {
     <Canvas className={className}>
       <defs>
         <linearGradient id="far-haze" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor={MAGENTA} stopOpacity="0" />
-          <stop offset="1" stopColor={MAGENTA} stopOpacity="0.5" />
+          <stop offset="0" stopColor={BLUE} stopOpacity="0" />
+          <stop offset="1" stopColor={BLUE} stopOpacity="0.5" />
         </linearGradient>
       </defs>
       <Antennas buildings={row} every={4} colour="#2c2a80" seed={3} />
@@ -225,9 +225,9 @@ export function MidSkyline({ className }: LayerProps) {
           outlineWidth: 3.5,
           windows: [
             { colour: CYAN, weight: 3 },
-            { colour: "#ffe08a", weight: 4 },
+            { colour: "#ffb8f0", weight: 4 },
             { colour: "#7ea8ff", weight: 3 },
-            { colour: MAGENTA, weight: 1 },
+            { colour: BLUE, weight: 1 },
           ],
           window: { w: 9, h: 13, gapX: 22, gapY: 29, lit: 0.34 },
           rim: true,
@@ -305,25 +305,25 @@ export function NearSkyline({ className }: LayerProps) {
   return (
     <Canvas className={className}>
       <defs>
-        <Halo id="near-magenta" colour={MAGENTA} />
+        <Halo id="near-blue" colour={BLUE} />
         <Halo id="near-cyan" colour={CYAN} />
-        <Halo id="near-yellow" colour={YELLOW} />
+        <Halo id="near-pink" colour={PINK} />
         <linearGradient id="near-fade" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#05070d" stopOpacity="0" />
           <stop offset="1" stopColor="#05070d" stopOpacity="0.9" />
         </linearGradient>
       </defs>
 
-      <ellipse cx="640" cy="590" rx="120" ry="210" fill="url(#near-magenta)" />
+      <ellipse cx="640" cy="590" rx="120" ry="210" fill="url(#near-blue)" />
       <ellipse cx="955" cy="640" rx="110" ry="200" fill="url(#near-cyan)" />
-      <ellipse cx="225" cy="560" rx="120" ry="220" fill="url(#near-yellow)" opacity="0.7" />
-      <ellipse cx="1240" cy="510" rx="120" ry="230" fill="url(#near-magenta)" />
+      <ellipse cx="225" cy="560" rx="120" ry="220" fill="url(#near-pink)" opacity="0.7" />
+      <ellipse cx="1240" cy="510" rx="120" ry="230" fill="url(#near-blue)" />
       <ellipse cx="380" cy="470" rx="110" ry="210" fill="url(#near-cyan)" />
-      <ellipse cx="1390" cy="520" rx="110" ry="160" fill="url(#near-yellow)" opacity="0.7" />
+      <ellipse cx="1390" cy="520" rx="110" ry="160" fill="url(#near-pink)" opacity="0.7" />
 
       <path d="M70 215v-80M58 158h24M1540 205v-90M1526 140h28M380 290v-46M1240 320v-54" stroke={INK} strokeWidth="5" fill="none" />
-      <circle cx="70" cy="133" r="5" fill={MAGENTA} />
-      <circle cx="1540" cy="113" r="5" fill={MAGENTA} />
+      <circle cx="70" cy="133" r="5" fill={BLUE} />
+      <circle cx="1540" cy="113" r="5" fill={BLUE} />
 
       <Buildings
         buildings={NEAR_BUILDINGS}
@@ -334,7 +334,7 @@ export function NearSkyline({ className }: LayerProps) {
           outline: INK,
           outlineWidth: 4.5,
           windows: [
-            { colour: "#ffd76a", weight: 5 },
+            { colour: "#ffa6ec", weight: 5 },
             { colour: "#38e8d8", weight: 3 },
             { colour: "#ff8ae2", weight: 1 },
           ],
@@ -343,12 +343,12 @@ export function NearSkyline({ className }: LayerProps) {
         }}
       />
 
-      <VerticalSign x={624} y={486} w={60} text="キャッシー" colour={MAGENTA} flicker="neon-flicker" />
+      <VerticalSign x={624} y={486} w={60} text="キャッシー" colour={BLUE} flicker="neon-flicker" />
       <VerticalSign x={930} y={546} w={54} text="8453" colour={CYAN} />
-      <VerticalSign x={196} y={432} w={56} text="アーケード" colour={YELLOW} />
+      <VerticalSign x={196} y={432} w={56} text="アーケード" colour={PINK} />
       <VerticalSign x={350} y={322} w={58} text="PRINTER" colour={CYAN} />
-      <VerticalSign x={1212} y={352} w={58} text="ARCADE" colour={MAGENTA} flicker="neon-flicker-late" />
-      <VerticalSign x={1366} y={458} w={52} text="バンク" colour={YELLOW} />
+      <VerticalSign x={1212} y={352} w={58} text="ARCADE" colour={BLUE} flicker="neon-flicker-late" />
+      <VerticalSign x={1366} y={458} w={52} text="バンク" colour={PINK} />
 
       <Billboard x={18} y={250} w={112} h={74} colour={GREEN}>
         <BillboardWord x={74} y={287} size={52} fill={GREEN}>$</BillboardWord>
@@ -356,11 +356,11 @@ export function NearSkyline({ className }: LayerProps) {
       <Billboard x={472} y={488} w={110} h={50} colour={CYAN}>
         <BillboardWord x={527} y={513} size={30} fill={CYAN}>CASHY</BillboardWord>
       </Billboard>
-      <Billboard x={1030} y={540} w={118} h={48} colour={YELLOW}>
-        <BillboardWord x={1089} y={564} size={30} fill={YELLOW}>$CASHY</BillboardWord>
+      <Billboard x={1030} y={540} w={118} h={48} colour={PINK}>
+        <BillboardWord x={1089} y={564} size={30} fill={PINK}>$CASHY</BillboardWord>
       </Billboard>
-      <Billboard x={1482} y={238} w={120} h={76} colour={MAGENTA}>
-        <BillboardWord x={1542} y={276} size={36} fill={MAGENTA}>8453</BillboardWord>
+      <Billboard x={1482} y={238} w={120} h={76} colour={BLUE}>
+        <BillboardWord x={1542} y={276} size={36} fill={BLUE}>8453</BillboardWord>
       </Billboard>
 
       <rect y="640" width="1600" height="260" fill="url(#near-fade)" />
@@ -385,11 +385,11 @@ export function Rooftop({ mascot, className }: LayerProps & { mascot: string }) 
         <linearGradient id="roof-rim" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stopColor={CYAN} />
           <stop offset="0.5" stopColor="#7ea8ff" />
-          <stop offset="1" stopColor={MAGENTA} />
+          <stop offset="1" stopColor={BLUE} />
         </linearGradient>
         <radialGradient id="roof-backlight">
-          <stop offset="0" stopColor={MAGENTA} stopOpacity="0.4" />
-          <stop offset="1" stopColor={MAGENTA} stopOpacity="0" />
+          <stop offset="0" stopColor={BLUE} stopOpacity="0.4" />
+          <stop offset="1" stopColor={BLUE} stopOpacity="0" />
         </radialGradient>
         <radialGradient id="roof-shadow">
           <stop offset="0" stopColor="#000" stopOpacity="0.8" />
@@ -425,7 +425,7 @@ export function Rooftop({ mascot, className }: LayerProps & { mascot: string }) 
         <circle cx="1298" cy="716" r="40" fill="#0b1132" />
         <path d="M1298 676v80M1258 716h80" fill="none" />
       </g>
-      <path d="M1040 772v-62M1364 772V662" stroke={MAGENTA} strokeWidth="2.5" strokeOpacity="0.85" fill="none" />
+      <path d="M1040 772v-62M1364 772V662" stroke={BLUE} strokeWidth="2.5" strokeOpacity="0.85" fill="none" />
 
       {/* The ledge */}
       <rect x="-10" y={LEDGE_TOP} width="1620" height="26" fill="#1d275f" stroke={INK} strokeWidth="5" />
@@ -435,7 +435,7 @@ export function Rooftop({ mascot, className }: LayerProps & { mascot: string }) 
 
       {/* Wet ledge catching the neon */}
       <path d="M690 781h70M840 781h96M480 781h110M1010 781h60" stroke={CYAN} strokeWidth="3" strokeLinecap="round" opacity="0.55" />
-      <path d="M740 790h52M880 790h40M1100 790h90M360 790h70" stroke={MAGENTA} strokeWidth="3" strokeLinecap="round" opacity="0.55" />
+      <path d="M740 790h52M880 790h40M1100 790h90M360 790h70" stroke={BLUE} strokeWidth="3" strokeLinecap="round" opacity="0.55" />
 
       <ellipse cx="800" cy={LEDGE_TOP + 11} rx="178" ry="11" fill="url(#roof-shadow)" />
 

@@ -12,7 +12,7 @@
   },
   "arcade": {
     "title": "Arcade",
-    "description": "Play Cashy Tower: run, bounce off the walls and climb 400 floors.",
+    "description": "Play Cashy Tower: run, bounce off the walls and see how high you can climb.",
     "line": "The machines are in. Pick a game.",
     "mascot": "/art/cashy-crouching.webp",
     "coming": [
@@ -22,7 +22,7 @@
     "game": {
       "title": "Cashy Tower",
       "tag": "Now playing",
-      "line": "Run, bounce off the walls and chain combos up 400 floors. How high can you go?",
+      "line": "Run, bounce off the walls and chain combos. How high can you go?",
       "playLabel": "Play now",
       "playHref": "/arcade/cashy-tower",
       "embedUrl": "https://ivantornado.github.io/cashy-tower/",

@@ -1,4 +1,5 @@
 import { AboutCoin } from "@/components/home/about-coin";
+import { Hype } from "@/components/home/hype";
 import { FarSkyline, MidSkyline, Moon, NearSkyline, Rooftop, Stars } from "@/components/home/skyline-art";
 import { SmoothScroll } from "@/components/home/smooth-scroll";
 import { ParallaxComponent } from "@/components/ui/parallax-scrolling";
@@ -9,7 +10,7 @@ import { asset } from "@/lib/utils";
 const layerClass = "absolute inset-0 size-full will-change-transform";
 
 export default function HomePage() {
-  const { hero, about, skyline } = home;
+  const { hero, about, skyline, hype } = home;
 
   return (
     <main>
@@ -48,6 +49,7 @@ export default function HomePage() {
         <div aria-hidden className="rain" />
         <div data-parallax-wash aria-hidden className="absolute inset-0 bg-black opacity-0" />
       </ParallaxComponent>
+      <Hype eyebrow={hype.eyebrow} title={hype.title} lede={hype.lede} points={hype.points} />
     </main>
   );
 }

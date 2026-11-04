@@ -1,15 +1,4 @@
 {
-  "baseCity": {
-    "title": "Base City",
-    "description": "Base City went quiet. Cashy moves in to rebuild it, block by block.",
-    "line": "Base City went quiet. Cashy moves in to rebuild it, block by block. Hold Cashy. Get stocked.",
-    "coming": [
-      "The explorable city map",
-      "Printer Factory, Cashy Arcade and the Bank",
-      "Neighbours: an iPod store and a Delivery Guy depot"
-    ],
-    "mascot": "/art/cashy-crouching.webp"
-  },
   "printer": {
     "title": "Printer",
     "description": "How Cashy works: 0.85% of every trade goes to holders, paid in MSTR stock, about daily.",

@@ -124,6 +124,71 @@ html.lenis body {
   }
 }
 
+/* Base City 3D: the name tags floating over buildings. */
+.city-labels {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.city-tag {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-paper);
+  background: rgb(5 7 13 / 0.85);
+  border: 1.5px solid var(--color-cyan);
+  border-radius: 6px;
+  padding: 6px 9px;
+  box-shadow: 0 0 12px rgb(39 231 255 / 0.35);
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+}
+
+.city-tag:hover,
+.city-tag.is-active {
+  background: var(--color-cyan);
+  color: var(--color-ink);
+}
+
+.city-tag--plot {
+  background: transparent;
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.city-tag--small {
+  font-size: 10px;
+  padding: 4px 7px;
+}
+
+.city-tag--hero {
+  font-size: 12px;
+  padding: 7px 10px;
+  border-color: var(--color-magenta);
+  box-shadow: 0 0 14px rgb(255 43 214 / 0.45);
+}
+
+.city-tag--hero:hover,
+.city-tag--hero.is-active {
+  background: var(--color-magenta);
+  color: var(--color-ink);
+}
+
+/* On phones only the tower, the arcade and Cashy keep a name; the rest still open their card when tapped. */
+@media (max-width: 720px) {
+  .city-tag--small,
+  .city-tag--minor {
+    display: none;
+  }
+}
+
 /* Slow rain over the skyline: one tall tile moved with transform only. */
 .rain {
   position: absolute;

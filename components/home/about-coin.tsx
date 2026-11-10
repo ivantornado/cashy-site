@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { useRef, useSyncExternalStore } from "react";
+import { cn } from "@/lib/utils";
 
 function useReducedMotionPreference() {
   const query = "(prefers-reduced-motion: reduce)";
@@ -38,7 +39,7 @@ function RevealLine({
   );
 }
 
-export function AboutCoin({ headline, support }: { headline: string[]; support: string }) {
+export function AboutCoin({ headline, support }: { headline: string[]; support: string[] }) {
   const ref = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotionPreference();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 85%", "center 45%"] });
@@ -48,7 +49,13 @@ export function AboutCoin({ headline, support }: { headline: string[]; support: 
 
   return (
     <section ref={ref} className="flex min-h-[120svh] flex-col justify-center bg-black px-4 py-24 md:px-8">
-      <div className="mx-auto w-full max-w-[1500px]">
+      <div className="relative isolate mx-auto w-full max-w-[1500px]">
+        {/* A soft Base-blue light behind the heading. Static, so nothing to switch off for reduced motion. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-[18%] -left-[8%] -z-10 h-[75%] w-[85%] blur-3xl"
+          style={{ background: "radial-gradient(ellipse at 40% 50%, rgb(2 79 246 / 0.42), rgb(2 79 246 / 0.12) 45%, transparent 72%)" }}
+        />
         <h2 className="font-display text-[clamp(3.25rem,10.5vw,10.5rem)] font-semibold leading-[0.98] text-balance text-paper">
           {headline.map((line, i) => (
             // Blur only from tablet up: it's the one effect here that costs phones frames.
@@ -57,9 +64,11 @@ export function AboutCoin({ headline, support }: { headline: string[]; support: 
             </RevealLine>
           ))}
         </h2>
-        <RevealLine progress={progress} range={[0.6, 1]} className="mt-8 block max-w-xl text-lg text-mist md:text-xl">
-          {support}
-        </RevealLine>
+        {support.map((paragraph, i) => (
+          <RevealLine key={paragraph} progress={progress} range={[0.55 + i * 0.1, Math.min(1, 0.85 + i * 0.08)]} className={cn("block max-w-2xl text-lg text-mist md:text-xl", i === 0 ? "mt-8" : "mt-5")}>
+            {paragraph}
+          </RevealLine>
+        ))}
       </div>
     </section>
   );

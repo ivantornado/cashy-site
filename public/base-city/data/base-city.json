@@ -1,0 +1,81 @@
+[
+  {
+    "id": "tower",
+    "name": "MSTR Tower",
+    "tag": "Cashy × MSTR",
+    "text": "The tallest building in Base City. On every Payday it throws MSTR stock certificates over the streets.",
+    "withCashy": "Cashy’s pool is paired with MSTR, Strategy’s stock. 0.85% of every Cashy trade goes to holders, paid in MSTR, on each Payday."
+  },
+  {
+    "id": "feel",
+    "name": "Feel.cash Exchange",
+    "tag": "Launchpad partner",
+    "text": "The trading floor of Base City, wrapped in a live ticker band, with twin towers for every stock and the coin paired with it. Where stocks meet internet culture.",
+    "withCashy": "Cashy launches on Feel.cash, paired with MSTR. Every Cashy trade runs through Feel.cash, and the holders’ share of the fees is paid in MSTR stock.",
+    "link": "https://feel.cash",
+    "linkLabel": "Visit feel.cash"
+  },
+  {
+    "id": "ipod",
+    "name": "iPod Store",
+    "tag": "Neighbour · $IPOD",
+    "text": "A giant white iPod rising from a dark stage. Apple is the company. IPOD is the culture.",
+    "withCashy": "“Buy an iPod for cash”: a crossover between Cashy and IPOD, the Apple-paired coin on Feel.cash, with shared art and joint contests.",
+    "link": "https://ipodonchain.com",
+    "linkLabel": "Visit ipodonchain.com"
+  },
+  {
+    "id": "guide",
+    "name": "City Guide tower",
+    "tag": "Information",
+    "text": "The lookout over Base City. Open the guide for the list of places, the partners and how to get around."
+  },
+  {
+    "id": "cashy",
+    "name": "Cashy",
+    "tag": "The Base Note · 8453",
+    "text": "Base City’s own money. He walks the streets and hops across the rooftops. Cash in. MSTR out."
+  },
+  {
+    "id": "printer",
+    "name": "Printer Factory",
+    "tag": "Roadmap · Week 2",
+    "text": "Home of the Base Printer: how Cashy works, Payday history and Print my receipt."
+  },
+  {
+    "id": "arcade",
+    "name": "Cashy Arcade",
+    "tag": "Now playing",
+    "text": "A building shaped like an arcade cabinet. Cashy Tower lives here: run, bounce off the walls and chain combos. How high can you go?"
+  },
+  {
+    "id": "bank",
+    "name": "Bank",
+    "tag": "Roadmap · Month 4",
+    "text": "Holder ranks: banknote tiers based on how much and how long you hold."
+  },
+  {
+    "id": "plot",
+    "name": "Open plot",
+    "tag": "Open for Base projects",
+    "text": "A cultural Base project that joins gets a building here, designed around its own identity, and its characters move into the streets."
+  },
+  {
+    "id": "reserved",
+    "name": "Reserved building",
+    "tag": "Future integration",
+    "text": "Held for a Base project that joins Base City. It turns solid when the project moves in."
+  },
+  {
+    "id": "project",
+    "name": "Base project",
+    "tag": "Base Renaissance",
+    "text": "A Base community that moved in. Its characters walk the streets instead of the bots."
+  },
+  {
+    "id": "park",
+    "name": "Base Park",
+    "tag": "Open space",
+    "text": "A green square for community events, meetups and weekly calls."
+  }
+]

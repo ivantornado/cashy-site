@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { NavLink } from "@/components/nav-link";
 import { BuyButton } from "@/components/ui/buy-button";
 import { Wordmark } from "@/components/ui/wordmark";
 import nav from "@/content/nav.json";
@@ -22,9 +22,9 @@ export function SiteFooter() {
             <ul className="flex flex-wrap gap-x-5 gap-y-2 md:justify-end">
               {nav.map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="font-display text-lg font-medium text-paper/85 transition-colors duration-150 hover:text-cyan">
+                  <NavLink href={item.href} standalone={item.standalone} className="font-display text-lg font-medium text-paper/85 transition-colors duration-150 hover:text-cyan">
                     {item.label}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
               {socials.map((social) => (

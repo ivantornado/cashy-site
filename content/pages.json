@@ -35,5 +35,19 @@
     "title": "Roadmap",
     "description": "Base City's metro: where Cashy is going, stop by stop.",
     "line": "Base City's metro: where Cashy is going, stop by stop."
+  },
+  "whitepaper": {
+    "title": "Whitepaper",
+    "description": "The full Cashy whitepaper is being written.",
+    "line": "The full Cashy whitepaper is being written.",
+    "mascot": "/art/cashy-crouching.webp",
+    "baseCity": {
+      "label": "Enter Base City",
+      "href": "/base-city/"
+    },
+    "roadmap": {
+      "label": "See the Roadmap",
+      "href": "/roadmap"
+    }
   }
 }

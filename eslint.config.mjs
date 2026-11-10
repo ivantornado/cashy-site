@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Third-party three.js copied as-is for the standalone Base City page.
+    "public/base-city/vendor/**",
   ]),
 ]);
 

@@ -10,13 +10,13 @@ type HypeProps = {
 };
 
 /** Each point gets one of the site's three lights along its top edge. */
-const accents = ["border-t-cyan", "border-t-base", "border-t-magenta"];
+const accents = ["border-t-cyan", "border-t-blue", "border-t-magenta"];
 
 export function Hype({ eyebrow, title, lede, points }: HypeProps) {
   return (
     <section className="bg-black px-4 py-24 md:px-8 md:py-32">
       <div className="mx-auto w-full max-w-[1500px]">
-        <p className="font-display text-sm font-bold tracking-[0.2em] text-cyan uppercase">{eyebrow}</p>
+        <p className="inline-block rounded-full bg-paper px-3.5 py-1.5 font-display text-sm font-bold tracking-[0.2em] text-blue uppercase">{eyebrow}</p>
         <h2 className="neon-word mt-5 text-[clamp(3rem,9vw,8rem)] text-balance">{title}</h2>
         <p className="mt-8 max-w-2xl text-lg text-mist md:text-xl">{lede}</p>
 

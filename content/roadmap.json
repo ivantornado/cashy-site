@@ -3,7 +3,7 @@
     "phase": "Line 1",
     "title": "Doors open",
     "period": "Month 1",
-    "colour": "cyan",
+    "colour": "blue",
     "items": [
       {
         "when": "W0",
@@ -21,7 +21,8 @@
         "when": "W2",
         "text": "Community",
         "detail": "Remix kit, meme contest #1 on X, ambassador program, Diamond Hands spotlight, weekly call #2",
-        "status": "next"
+        "status": "next",
+        "unlocks": "Printer Factory"
       },
       {
         "when": "W3",
@@ -33,7 +34,8 @@
         "when": "W4",
         "text": "First season",
         "detail": "Top 3 get an airdrop and a call slot, scores saved onchain on Base, month 1 recap, weekly call #4",
-        "status": "next"
+        "status": "next",
+        "unlocks": "Cashy Arcade"
       }
     ]
   },
@@ -41,7 +43,7 @@
     "phase": "Line 2",
     "title": "City lights",
     "period": "Months 2 to 4",
-    "colour": "blue",
+    "colour": "light",
     "items": [
       {
         "when": "Month 2",
@@ -53,7 +55,8 @@
         "when": "Month 2",
         "text": "Crossover: buy an iPod for cash",
         "detail": "First crossover with IPOD on Feel.cash",
-        "status": "next"
+        "status": "next",
+        "unlocks": "iPod Store"
       },
       {
         "when": "Month 3",
@@ -65,13 +68,15 @@
         "when": "Month 3",
         "text": "Crossover: Delivery Guy delivers Cashy",
         "detail": "Second crossover, exploring a cross-pairing",
-        "status": "next"
+        "status": "next",
+        "unlocks": "Delivery Guy depot"
       },
       {
         "when": "Month 4",
         "text": "The Bank opens",
         "detail": "Holder ranks live, Get on the bill pilot, proposal to use Cashy inside Feel.cash, Base builder program application",
-        "status": "next"
+        "status": "next",
+        "unlocks": "Bank"
       }
     ]
   },
@@ -79,7 +84,7 @@
     "phase": "Line 3",
     "title": "Night shift",
     "period": "Month 4 onwards",
-    "colour": "pink",
+    "colour": "pale",
     "items": [
       {
         "when": "Long term",

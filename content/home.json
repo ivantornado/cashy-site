@@ -5,14 +5,22 @@
     "poster": "/video/hero-poster.jpg",
     "title": "CASHY",
     "tagline": "Cash in. MSTR out.",
-    "scrollHint": "SCROLL"
+    "scrollHint": "SCROLL",
+    "enter": {
+      "label": "Enter Base City",
+      "href": "/base-city/"
+    }
   },
   "about": {
     "headline": [
       "One banknote.",
       "One very quiet city."
     ],
-    "support": "Base City went quiet. Cashy, the Base Note, moves in to rebuild it block by block, connecting people and stocks on Base. 0.85% of every trade goes to holders, paid in MSTR stock, about daily."
+    "support": [
+      "Base City went quiet. The builders moved on, the streets emptied, and the lights in the towers went out one by one.",
+      "Then a single banknote walked in: Cashy, the Base Note, denomination 8453, the chain ID of Base itself. He isn’t here to be spent. He’s here to rebuild. Every $CASHY trade runs on Feel.cash, in a pool paired with MSTR, Strategy’s stock, and 0.85% of every trade goes back to holders, paid in MSTR stock, about once a day. Each payout is a Payday, and each Payday turns another light back on in Base City.",
+      "As more Base projects move in, they get their own building, and their characters take over the streets. One block at a time, the quiet city becomes the Base Renaissance."
+    ]
   },
   "skyline": {
     "word": "CASHY",

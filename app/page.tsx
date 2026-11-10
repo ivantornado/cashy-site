@@ -21,6 +21,8 @@ export default function HomePage() {
         title={hero.title}
         tagline={hero.tagline}
         scrollHint={hero.scrollHint}
+        enterHref={asset(hero.enter.href)}
+        enterLabel={hero.enter.label}
       />
       <AboutCoin headline={about.headline} support={about.support} />
       <ParallaxComponent label={skyline.label}>

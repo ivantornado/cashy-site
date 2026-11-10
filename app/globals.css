@@ -4,7 +4,7 @@
   --color-ink: #05070d;
   --color-night: #0b1330;
   --color-dusk: #141f52;
-  --color-base: #024ff6;
+  --color-blue: #024ff6;
   --color-violet: #8b3dff;
   --color-magenta: #ff2bd6;
   --color-cyan: #27e7ff;
@@ -43,7 +43,7 @@ html.lenis body {
 }
 
 ::selection {
-  background: var(--color-base);
+  background: var(--color-blue);
   color: var(--color-paper);
 }
 
@@ -77,7 +77,7 @@ html.lenis body {
   -webkit-text-stroke: 0.011em var(--color-paper);
   text-shadow:
     -0.022em 0.012em 0 var(--color-cyan),
-    0.022em 0.012em 0 var(--color-base),
+    0.022em 0.012em 0 var(--color-blue),
     0 0.04em 0.28em rgb(2 79 246 / 0.6),
     0.03em 0 0 var(--color-ink),
     -0.03em 0 0 var(--color-ink),
@@ -95,7 +95,7 @@ html.lenis body {
   justify-content: center;
   border-radius: 999px;
   border: 2px solid var(--color-ink);
-  background: var(--color-base);
+  background: var(--color-blue);
   color: #fff;
   font-family: var(--font-display);
   font-weight: 600;
@@ -120,62 +120,6 @@ html.lenis body {
     box-shadow:
       0 0 0 1.5px var(--color-cyan),
       0 8px 24px rgb(39 231 255 / 0.45);
-  }
-}
-
-/* Base City 3D: the name tags floating over buildings, in the friend's white-and-blue style. */
-.city-labels {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.city-tag {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: #0000ff;
-  background: #ffffff;
-  border-radius: 6px;
-  padding: 6px 9px;
-  pointer-events: auto;
-  cursor: pointer;
-  user-select: none;
-}
-
-.city-tag:hover,
-.city-tag.is-active {
-  background: #0000ff;
-  color: #ffffff;
-  outline: 1.5px solid #ffffff;
-}
-
-.city-tag--plot {
-  background: transparent;
-  color: #ffffff;
-  border: 1.5px dashed #ffffff;
-}
-
-.city-tag--small {
-  font-size: 10px;
-  padding: 4px 7px;
-}
-
-.city-tag--hero {
-  font-size: 12px;
-  padding: 7px 10px;
-}
-
-/* On phones only the tower, the arcade and Cashy keep a name; the rest still open their card when tapped. */
-@media (max-width: 720px) {
-  .city-tag--small,
-  .city-tag--minor {
-    display: none;
   }
 }
 

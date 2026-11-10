@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { NavLink } from "@/components/nav-link";
 import { useEffect, useRef, useState } from "react";
 import { BuyButton } from "@/components/ui/buy-button";
 import { Wordmark } from "@/components/ui/wordmark";
@@ -9,11 +10,10 @@ import nav from "@/content/nav.json";
 import { setMenuOpen } from "@/lib/scroll-state";
 import { cn } from "@/lib/utils";
 
-type NavItem = { label: string; href: string; placeholder?: string };
+type NavItem = { label: string; href: string; standalone?: boolean };
 const items: NavItem[] = nav;
 
 function isActive(item: NavItem, pathname: string) {
-  if (item.placeholder) return false;
   const path = pathname.replace(/\/$/, "") || "/";
   return path === item.href;
 }
@@ -67,16 +67,17 @@ export function SiteHeader() {
               const active = isActive(item, pathname);
               return (
                 <li key={item.label}>
-                  <Link
+                  <NavLink
                     href={item.href}
+                    standalone={item.standalone}
                     aria-current={active ? "page" : undefined}
                     className={cn(
                       "rounded-full px-3.5 py-2 font-display text-[17px] font-medium text-paper/85 transition-colors duration-150 hover:text-cyan",
-                      active && "text-cyan underline decoration-base decoration-[3px] underline-offset-[7px]",
+                      active && "text-cyan underline decoration-blue decoration-[3px] underline-offset-[7px]",
                     )}
                   >
                     {item.label}
-                  </Link>
+                  </NavLink>
                 </li>
               );
             })}
@@ -113,9 +114,10 @@ export function SiteHeader() {
                 const active = isActive(item, pathname);
                 return (
                   <li key={item.label}>
-                    <Link
+                    <NavLink
                       ref={i === 0 ? firstLinkRef : undefined}
                       href={item.href}
+                      standalone={item.standalone}
                       aria-current={active ? "page" : undefined}
                       onClick={() => setOpen(false)}
                       className={cn(
@@ -124,7 +126,7 @@ export function SiteHeader() {
                       )}
                     >
                       {item.label}
-                    </Link>
+                    </NavLink>
                   </li>
                 );
               })}

@@ -48,3 +48,6 @@ next-env.d.ts
 
 # local editor and preview settings
 /.claude/
+
+# local copy of the friend's Base City repo (holds the private briefs)
+/cashybasecity/

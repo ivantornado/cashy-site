@@ -18,8 +18,8 @@ export default function ArcadePage() {
           <p className="mt-6 max-w-lg text-lg font-semibold text-paper md:text-xl">{line}</p>
 
           {/* The cabinet's sign: one game for now, with the way in. */}
-          <section aria-labelledby="game-title" className="mt-8 max-w-xl rounded-2xl border-[3px] border-base bg-ink/85 p-6 shadow-[0_4px_36px_rgb(2_79_246_/_0.5)] md:p-8">
-            <p className="neon-flicker inline-block rounded-md bg-base px-2.5 py-1 font-display text-sm font-semibold tracking-widest text-paper uppercase">{game.tag}</p>
+          <section aria-labelledby="game-title" className="mt-8 max-w-xl rounded-2xl border-[3px] border-blue bg-ink/85 p-6 shadow-[0_4px_36px_rgb(2_79_246_/_0.5)] md:p-8">
+            <p className="neon-flicker inline-block rounded-md bg-blue px-2.5 py-1 font-display text-sm font-semibold tracking-widest text-paper uppercase">{game.tag}</p>
             <h2 id="game-title" className="neon-word mt-2 text-[clamp(2.5rem,8vw,4.5rem)]">
               {game.title}
             </h2>

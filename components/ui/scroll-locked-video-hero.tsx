@@ -17,6 +17,9 @@ export interface MetroHeroProps {
   title?: string
   scrollHint?: string
   tagline?: string
+  /** Optional link in the hero, e.g. into Base City. */
+  enterHref?: string
+  enterLabel?: string
   /** Total input distance (px) needed to scrub the full video. Tune to taste. */
   scrubDistance?: number
   className?: string
@@ -44,6 +47,8 @@ export default function MetroHero({
   title = "THE CITY OPENS",
   scrollHint = "SCROLL",
   tagline = "Every door in the city is already open.",
+  enterHref,
+  enterLabel,
   scrubDistance = 2600,
   className,
   style,
@@ -416,14 +421,17 @@ export default function MetroHero({
         >
           <p
             style={{
+              display: "inline-block",
               margin: 0,
-              maxWidth: "18ch",
-              fontFamily: "var(--font-display)",
-              fontWeight: 600,
-              fontSize: "clamp(32px, 5vw, 72px)",
-              lineHeight: 1.08,
+              fontFamily: "var(--font-heading)",
+              fontWeight: 400,
+              fontSize: "clamp(28px, 4vw, 56px)",
+              lineHeight: 1.1,
               color: COL_TEXT,
-              textShadow: "0 6px 30px rgba(5,7,13,0.75)",
+              background: "var(--color-blue)",
+              padding: "0.28em 0.5em",
+              borderRadius: 12,
+              boxShadow: "0 10px 34px rgb(2 79 246 / 0.45)",
             }}
           >
             {tagline}
@@ -467,6 +475,16 @@ export default function MetroHero({
         </svg>
       </div>
 
+      {enterHref && (
+        <a
+          href={enterHref}
+          className="absolute left-1/2 inline-flex h-12 -translate-x-1/2 items-center rounded-full border-2 border-paper/60 bg-ink/40 px-6 font-display text-base font-semibold whitespace-nowrap text-paper backdrop-blur-sm transition-colors duration-150 hover:border-cyan hover:text-cyan"
+          style={{ bottom: "calc(clamp(24px, 6vh, 48px) + 64px)" }}
+        >
+          {enterLabel}
+        </a>
+      )}
+
       {/* Thin progress line — fills as the video advances. */}
       <div
         style={{
@@ -483,7 +501,7 @@ export default function MetroHero({
           style={{
             height: "100%",
             width: "100%",
-            background: "linear-gradient(90deg, var(--color-cyan), var(--color-base))",
+            background: "linear-gradient(90deg, var(--color-cyan), var(--color-blue))",
             transform: "scaleX(0)",
             transformOrigin: "left center",
           }}

@@ -12,24 +12,40 @@
   },
   "arcade": {
     "title": "Arcade",
-    "description": "Play Cashy Tower: run, bounce off the walls and see how high you can climb.",
+    "description": "Play Cashy Tower and Cashy Invaders in the Cashy Arcade.",
     "line": "The machines are in. Pick a game.",
-    "mascot": "/art/cashy-crouching.webp",
+    "mascot": "/art/cashy-arcade.webp",
+    "mascotAlt": "Cashy, a banknote in sunglasses and a leather jacket, playing a Cashy Arcade cabinet.",
     "coming": [
       "Weekly top 10 leaderboard",
       "Past winners"
     ],
-    "game": {
-      "title": "Cashy Tower",
-      "tag": "Now playing",
-      "line": "Run, bounce off the walls and chain combos. How high can you go?",
-      "playLabel": "Play now",
-      "playHref": "/arcade/cashy-tower",
-      "embedUrl": "https://ivantornado.github.io/cashy-tower/",
-      "backLabel": "Back to the Arcade",
-      "hint": "Click the game, then use the keyboard: ← → or A D to move, Space, W or ↑ to jump.",
-      "phoneNote": "Phone controls are coming. For now, play on a computer."
-    }
+    "backLabel": "Back to the Arcade",
+    "games": [
+      {
+        "id": "cashy-tower",
+        "title": "Cashy Tower",
+        "tag": "Now playing",
+        "description": "Play Cashy Tower: run, bounce off the walls and see how high you can climb.",
+        "line": "Run, bounce off the walls and chain combos. How high can you go?",
+        "playLabel": "Play now",
+        "playHref": "/arcade/cashy-tower",
+        "embedUrl": "https://ivantornado.github.io/cashy-tower/",
+        "hint": "Click the game, then use the keyboard: ← → or A D to move, Space, W or ↑ to jump.",
+        "phoneNote": "Phone controls are coming. For now, play on a computer."
+      },
+      {
+        "id": "cashy-invaders",
+        "title": "Cashy Invaders",
+        "tag": "New",
+        "description": "Play Cashy Invaders: Cashy throws cash at the rival coins. How many waves can you clear?",
+        "line": "Cashy throws cash at the rival coins. How many waves can you clear?",
+        "playLabel": "Play now",
+        "playHref": "/arcade/cashy-invaders",
+        "embedUrl": "https://ivantornado.github.io/cashy-invaders/",
+        "hint": "Click the game, then use the keyboard: ← → or A D to move, Space to throw cash, P to pause. On a phone, use the buttons under the game."
+      }
+    ]
   },
   "roadmap": {
     "title": "Roadmap",

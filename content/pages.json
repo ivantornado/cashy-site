@@ -12,7 +12,7 @@
   },
   "arcade": {
     "title": "Arcade",
-    "description": "Play Cashy Tower and Cashy Invaders in the Cashy Arcade.",
+    "description": "Play Cashy Tower, Cashy Invaders and Cashy Bubbles in the Cashy Arcade.",
     "line": "The machines are in. Pick a game.",
     "mascot": "/art/cashy-arcade.webp",
     "mascotAlt": "Cashy, a banknote in sunglasses and a leather jacket, playing a Cashy Arcade cabinet.",
@@ -44,6 +44,17 @@
         "playHref": "/arcade/cashy-invaders",
         "embedUrl": "https://ivantornado.github.io/cashy-invaders/",
         "hint": "Click the game, then use the keyboard: ← → or A D to move, Space to throw cash, P to pause. On a phone, use the buttons under the game."
+      },
+      {
+        "id": "cashy-bubbles",
+        "title": "Cashy Bubbles",
+        "tag": "New",
+        "description": "Play Cashy Bubbles: match three coins to pop them, and beat the clock before the rows reach the street.",
+        "line": "Match three coins to pop them. Beat the clock.",
+        "playLabel": "Play now",
+        "playHref": "/arcade/cashy-bubbles",
+        "embedUrl": "https://ivantornado.github.io/cashy-bubbles/",
+        "hint": "Click the game, then aim with ← → or the mouse and fire with Space or a click. P pauses. On a phone, drag to aim and let go to fire."
       }
     ]
   },

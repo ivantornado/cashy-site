@@ -1,10 +1,14 @@
-import { NavLink } from "@/components/nav-link";
+"use client";
+
+import { usePathname } from "next/navigation";
+import { isActive, NavLink } from "@/components/nav-link";
 import { BuyButton } from "@/components/ui/buy-button";
 import { Wordmark } from "@/components/ui/wordmark";
 import nav from "@/content/nav.json";
 import site from "@/content/site.json";
 
 export function SiteFooter() {
+  const pathname = usePathname();
   const socials = [
     { label: site.followLabel, href: site.xUrl },
     { label: "Telegram", href: site.telegramUrl },
@@ -22,14 +26,14 @@ export function SiteFooter() {
             <ul className="flex flex-wrap gap-x-5 gap-y-2 md:justify-end">
               {nav.map((item) => (
                 <li key={item.label}>
-                  <NavLink href={item.href} standalone={item.standalone} className="font-display text-lg font-medium text-paper/85 transition-colors duration-150 hover:text-cyan">
+                  <NavLink href={item.href} standalone={item.standalone} aria-current={isActive(item, pathname) ? "page" : undefined} className="nav-link font-display text-lg font-medium">
                     {item.label}
                   </NavLink>
                 </li>
               ))}
               {socials.map((social) => (
                 <li key={social.label}>
-                  <a href={social.href} target="_blank" rel="noopener noreferrer" className="font-display text-lg font-medium text-paper/85 transition-colors duration-150 hover:text-cyan">
+                  <a href={social.href} target="_blank" rel="noopener noreferrer" className="nav-link font-display text-lg font-medium">
                     {social.label}
                   </a>
                 </li>

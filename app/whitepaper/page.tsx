@@ -8,7 +8,7 @@ const { title, description, line, mascot, baseCity, roadmap } = pages.whitepaper
 
 export const metadata: Metadata = { title, description };
 
-const pill = "inline-flex h-12 items-center rounded-full border-2 border-paper/40 px-6 font-display text-lg font-semibold text-paper transition-colors duration-150 hover:border-cyan hover:text-cyan";
+const pill = "btn-outline h-12 px-6 text-lg";
 
 export default function WhitepaperPage() {
   return (

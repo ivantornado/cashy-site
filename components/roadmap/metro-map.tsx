@@ -8,7 +8,7 @@ type Stop = { when: string; text: string; detail: string; status: string; unlock
 type Line = { phase: string; title: string; period: string; colour: string; items: Stop[] };
 
 /** Base palette only: one strong blue, a lighter one, a pale dashed one. */
-const COLOURS: Record<string, string> = { blue: "#024ff6", light: "#6f97ff", pale: "#b9cbff" };
+const COLOURS: Record<string, string> = { blue: "#0000ff", light: "#4d4dff", pale: "#c7c7ff" };
 const DASHED = new Set(["pale"]);
 const STATUS: Record<Status, string> = { done: "Done", "in-progress": "In progress", next: "Next", maybe: "Maybe" };
 
@@ -272,7 +272,7 @@ export function MetroMap({ lines }: { lines: Line[] }) {
                 Unlocks in Base City: <strong>{pickedStop.unlocks}</strong>
               </p>
               {/* Base City is its own full-screen page, so a plain link rather than the in-app router. */}
-              <a href={asset("/base-city/")} className="mt-2 inline-block font-display text-sm font-semibold text-paper underline decoration-blue decoration-2 underline-offset-4 hover:text-cyan">
+              <a href={asset("/base-city/")} className="text-link mt-2 inline-block text-sm font-semibold">
                 Enter Base City
               </a>
             </div>

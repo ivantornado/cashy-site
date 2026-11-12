@@ -51,3 +51,6 @@ next-env.d.ts
 
 # local copy of the friend's Base City repo (holds the private briefs)
 /cashybasecity/
+
+# Briefs and reference screenshots from the team (private)
+/Update 3 Cashy/

@@ -14,7 +14,7 @@
       {
         "when": "W1",
         "text": "Launch",
-        "detail": "Launch on Feel.cash (MSTRc), first automated Payday post, Telegram opens, CoinGecko / CMC / Coinbase Wallet requests, weekly call #1",
+        "detail": "Launch on Feel.cash (NVDAc), first automated Payday post, Telegram opens, CoinGecko / CMC / Coinbase Wallet requests, weekly call #1",
         "status": "next"
       },
       {
@@ -22,7 +22,7 @@
         "text": "Community",
         "detail": "Remix kit, meme contest #1 on X, ambassador program, Diamond Hands spotlight, weekly call #2",
         "status": "next",
-        "unlocks": "Printer Factory"
+        "unlocks": "Chip Factory"
       },
       {
         "when": "W3",

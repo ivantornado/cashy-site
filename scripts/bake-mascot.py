@@ -21,8 +21,8 @@ POSES = {
     "cashy-crouching.webp": (870, 1780),
 }
 PAD = 48
-CYAN = (39, 231, 255)
-BLUE = (2, 79, 246)
+CYAN = (77, 77, 255)  # Base blue tint #4d4dff (the site has no cyan; the name is the rim it replaced)
+BLUE = (0, 0, 255)
 NIGHT = (11, 19, 48)
 
 

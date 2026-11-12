@@ -428,10 +428,7 @@ export default function MetroHero({
               fontSize: "clamp(28px, 4vw, 56px)",
               lineHeight: 1.1,
               color: COL_TEXT,
-              background: "var(--color-blue)",
-              padding: "0.28em 0.5em",
-              borderRadius: 12,
-              boxShadow: "0 10px 34px rgb(2 79 246 / 0.45)",
+              textShadow: "0 2px 18px rgb(5 7 13 / 0.85), 0 0 42px rgb(0 0 255 / 0.55)",
             }}
           >
             {tagline}
@@ -478,7 +475,7 @@ export default function MetroHero({
       {enterHref && (
         <a
           href={enterHref}
-          className="absolute left-1/2 inline-flex h-12 -translate-x-1/2 items-center rounded-full border-2 border-paper/60 bg-ink/40 px-6 font-display text-base font-semibold whitespace-nowrap text-paper backdrop-blur-sm transition-colors duration-150 hover:border-cyan hover:text-cyan"
+          className="btn-outline absolute left-1/2 h-12 -translate-x-1/2 border-paper/60 bg-ink/40 px-6 text-base backdrop-blur-sm"
           style={{ bottom: "calc(clamp(24px, 6vh, 48px) + 64px)" }}
         >
           {enterLabel}
@@ -501,7 +498,7 @@ export default function MetroHero({
           style={{
             height: "100%",
             width: "100%",
-            background: "linear-gradient(90deg, var(--color-cyan), var(--color-blue))",
+            background: "linear-gradient(90deg, var(--color-blue-pale), var(--color-blue))",
             transform: "scaleX(0)",
             transformOrigin: "left center",
           }}

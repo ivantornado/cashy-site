@@ -25,7 +25,7 @@ export function ComingSoon({ title, line, coming = [], mascot, actions }: Coming
               {coming.map((item) => (
                 <li key={item} className="flex flex-wrap items-baseline gap-x-3">
                   <span>{item}</span>
-                  <span className="font-display text-sm font-semibold text-cyan">Coming</span>
+                  <span className="pill-coming">Coming</span>
                 </li>
               ))}
             </ul>
@@ -35,7 +35,7 @@ export function ComingSoon({ title, line, coming = [], mascot, actions }: Coming
               <>
                 <BuyButton className="h-12 px-6 text-lg" />
                 <FollowLink className="h-12 px-6 text-lg" />
-                <Link href="/" className="font-display text-lg font-medium text-paper underline decoration-cyan decoration-2 underline-offset-4 transition-colors duration-150 hover:text-cyan">
+                <Link href="/" className="text-link text-lg">
                   Back to the city
                 </Link>
               </>

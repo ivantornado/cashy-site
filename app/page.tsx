@@ -24,9 +24,9 @@ export default function HomePage() {
         enterHref={asset(hero.enter.href)}
         enterLabel={hero.enter.label}
       />
-      <AboutCoin headline={about.headline} support={about.support} />
+      <AboutCoin {...about} />
       <ParallaxComponent label={skyline.label}>
-        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-[#04050f] via-[#10174a] to-[#4a1c86]" />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-b from-[#04050f] via-[#0a0f4a] to-[#1a1a8c]" />
         <Stars className="absolute inset-0 size-full" />
         <div data-parallax-layer="moon" className={layerClass}>
           <Moon className="size-full" />

@@ -2,12 +2,12 @@
   "_todo": "TODO: buyUrl must become Cashy's own Feel.cash page. telegramUrl stays hidden until filled in.",
   "name": "Cashy",
   "ticker": "$CASHY",
-  "description": "Cashy is the Base Note, a banknote character and a meme coin on Base. Cash in. MSTR out.",
+  "description": "Cashy is the Base Note, a banknote character and a meme coin on Base. Cash in. NVDA out.",
   "buyLabel": "Buy on Feel.cash",
   "buyUrl": "https://feel.cash",
   "xUrl": "https://x.com/cashybase",
   "followLabel": "Follow on X",
   "telegramUrl": "",
-  "footerLine": "Cash in. MSTR out.",
-  "disclaimer": "Cashy is a meme coin. Fees are shared with holders in MSTR stock; this is not a promised return. Cashy is not affiliated with Strategy, Coinbase or Base."
+  "footerLine": "Cash in. NVDA out.",
+  "disclaimer": "Cashy is a meme coin. Fees are shared with holders in NVDA stock; this is not a promised return. Cashy is not affiliated with Nvidia, Coinbase, Base or Feel.cash."
 }

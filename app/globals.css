@@ -4,11 +4,12 @@
   --color-ink: #05070d;
   --color-night: #0b1330;
   --color-dusk: #141f52;
-  --color-blue: #024ff6;
-  --color-violet: #8b3dff;
-  --color-magenta: #ff2bd6;
-  --color-cyan: #27e7ff;
-  --color-note: #a9dd8c;
+  /* Base blue and its two tints. No cyan or pink on the site. */
+  --color-blue: #0000ff;
+  --color-blue-mid: #4d4dff;
+  --color-blue-pale: #c7c7ff;
+  /* Cashy green: the green of the CASHY wordmark. */
+  --color-green: #a9dd8c;
   --color-paper: #f2f4f8;
   --color-mist: #aab4d4;
 
@@ -48,7 +49,7 @@ html.lenis body {
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-cyan);
+  outline: 2px solid var(--color-blue-pale);
   outline-offset: 3px;
   border-radius: 6px;
 }
@@ -76,9 +77,9 @@ html.lenis body {
   /* Cynatar has one thin weight. A same-colour stroke fattens it about 25%, the shadows redraw the ink outline. */
   -webkit-text-stroke: 0.011em var(--color-paper);
   text-shadow:
-    -0.022em 0.012em 0 var(--color-cyan),
+    -0.022em 0.012em 0 var(--color-blue-mid),
     0.022em 0.012em 0 var(--color-blue),
-    0 0.04em 0.28em rgb(2 79 246 / 0.6),
+    0 0.04em 0.28em rgb(0 0 255 / 0.6),
     0.03em 0 0 var(--color-ink),
     -0.03em 0 0 var(--color-ink),
     0 0.03em 0 var(--color-ink),
@@ -89,6 +90,8 @@ html.lenis body {
     -0.022em -0.022em 0 var(--color-ink);
 }
 
+/* Filled buttons ("Play now"): Base blue, a brighter blue on hover and focus. */
+.btn-primary,
 .btn-buy {
   display: inline-flex;
   align-items: center;
@@ -100,27 +103,135 @@ html.lenis body {
   font-family: var(--font-display);
   font-weight: 600;
   white-space: nowrap;
-  box-shadow:
-    0 0 0 1.5px rgb(255 255 255 / 0.28),
-    0 6px 18px rgb(2 79 246 / 0.55);
+  box-shadow: 0 6px 18px rgb(0 0 255 / 0.5);
   transition:
     transform 160ms cubic-bezier(0.16, 1, 0.3, 1),
-    background-color 160ms ease,
-    box-shadow 160ms ease;
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
 }
 
+.btn-primary:active,
 .btn-buy:active {
   transform: scale(0.97);
 }
 
+.btn-primary:focus-visible {
+  background: var(--color-blue-mid);
+}
+
+/* "Buy on Feel.cash" always wears a Cashy-green frame, and fills green on hover. */
+.btn-buy {
+  border-color: var(--color-green);
+}
+
+.btn-buy:focus-visible {
+  background: var(--color-green);
+  color: var(--color-ink);
+}
+
 @media (hover: hover) {
-  .btn-buy:hover {
-    background: #2563ff;
+  .btn-primary:hover {
+    background: var(--color-blue-mid);
     transform: translateY(-1px);
-    box-shadow:
-      0 0 0 1.5px var(--color-cyan),
-      0 8px 24px rgb(39 231 255 / 0.45);
+    box-shadow: 0 8px 24px rgb(77 77 255 / 0.55);
   }
+
+  .btn-buy:hover {
+    background: var(--color-green);
+    color: var(--color-ink);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgb(169 221 140 / 0.35);
+  }
+}
+
+/* Outlined buttons ("Follow on X"): fill with Base blue on hover and focus. */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 2px solid rgb(242 244 248 / 0.4);
+  color: var(--color-paper);
+  font-family: var(--font-display);
+  font-weight: 600;
+  white-space: nowrap;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.btn-outline:focus-visible {
+  background: var(--color-blue);
+  border-color: var(--color-blue);
+}
+
+@media (hover: hover) {
+  .btn-outline:hover {
+    background: var(--color-blue);
+    border-color: var(--color-blue);
+  }
+}
+
+/* Nav links: Cashy green on hover and focus; the current page is green with a thin green underline. */
+.nav-link {
+  color: rgb(242 244 248 / 0.85);
+  transition: color 150ms ease;
+}
+
+.nav-link:focus-visible,
+.nav-link[aria-current="page"] {
+  color: var(--color-green);
+}
+
+.nav-link[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--color-green);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
+}
+
+@media (hover: hover) {
+  .nav-link:hover {
+    color: var(--color-green);
+  }
+}
+
+/* Text links like "Back to the city": white with a Base-blue underline, lighter blue on hover. */
+.text-link {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--color-paper);
+  text-decoration: underline;
+  text-decoration-color: var(--color-blue);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color 150ms ease;
+}
+
+.text-link:focus-visible {
+  color: var(--color-blue-mid);
+}
+
+@media (hover: hover) {
+  .text-link:hover {
+    color: var(--color-blue-mid);
+  }
+}
+
+/* "Coming" labels, styled like the NEW badge on the Arcade. */
+.pill-coming {
+  display: inline-block;
+  border-radius: 6px;
+  background: var(--color-blue);
+  padding: 2px 8px;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-transform: uppercase;
 }
 
 /* Slow rain over the skyline: one tall tile moved with transform only. */
@@ -129,7 +240,7 @@ html.lenis body {
   inset: -240px 0 0;
   pointer-events: none;
   opacity: 0.32;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg stroke='%23bfeaff' stroke-width='1.2' stroke-linecap='round'%3E%3Cpath d='M30 10l-5 26M92 58l-5 26M160 16l-5 26M214 92l-5 26M60 128l-5 26M130 150l-5 26M198 186l-5 26M16 204l-5 26'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg stroke='%23c7c7ff' stroke-width='1.2' stroke-linecap='round'%3E%3Cpath d='M30 10l-5 26M92 58l-5 26M160 16l-5 26M214 92l-5 26M60 128l-5 26M130 150l-5 26M198 186l-5 26M16 204l-5 26'/%3E%3C/g%3E%3C/svg%3E");
   background-size: 240px 240px;
   animation: rain-fall 0.9s linear infinite;
   will-change: transform;
@@ -164,10 +275,90 @@ html.lenis body {
   }
 }
 
+/* Home: Cashy beside the headline. Transforms and opacity only; paused while off-screen. */
+.hero-cashy-bob {
+  animation: hero-cashy-bob 3.4s ease-in-out infinite;
+}
+
+/* Every few seconds he leans and glances towards the Buy button, top right. */
+.hero-cashy-lean {
+  transform-origin: 50% 90%;
+  animation: hero-cashy-lean 7s cubic-bezier(0.16, 1, 0.3, 1) 2s infinite;
+}
+
+.hero-cashy-print {
+  opacity: 0;
+  animation: hero-cashy-print 4.8s ease-out infinite;
+}
+
+.hero-cashy-led {
+  animation: hero-cashy-led 1.2s steps(1) infinite;
+}
+
+.hero-cashy.is-paused *,
+.hero-cashy.is-paused {
+  animation-play-state: paused;
+}
+
+@keyframes hero-cashy-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes hero-cashy-lean {
+  0%,
+  72%,
+  100% {
+    transform: rotate(0deg) translateX(0);
+  }
+  78%,
+  92% {
+    transform: rotate(3.5deg) translateX(10px);
+  }
+}
+
+@keyframes hero-cashy-print {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px) rotate(0deg) scale(0.6);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--x) * 0.2), -20px) rotate(calc(var(--tilt) * 0.3)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--x)), -230px) rotate(var(--tilt)) scale(0.9);
+  }
+}
+
+@keyframes hero-cashy-led {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rain,
   .neon-flicker,
-  .neon-flicker-late {
-    animation: none;
+  .neon-flicker-late,
+  .hero-cashy * {
+    animation: none !important;
+  }
+
+  /* The still frame: two prints resting just above the printer. */
+  .hero-cashy-print:nth-child(1),
+  .hero-cashy-print:nth-child(2) {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--x)), -40px) rotate(var(--tilt));
   }
 }

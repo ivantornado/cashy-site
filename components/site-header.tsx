@@ -2,21 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NavLink } from "@/components/nav-link";
+import { isActive, NavLink, type NavItem } from "@/components/nav-link";
 import { useEffect, useRef, useState } from "react";
 import { BuyButton } from "@/components/ui/buy-button";
 import { Wordmark } from "@/components/ui/wordmark";
 import nav from "@/content/nav.json";
 import { setMenuOpen } from "@/lib/scroll-state";
-import { cn } from "@/lib/utils";
 
-type NavItem = { label: string; href: string; standalone?: boolean };
 const items: NavItem[] = nav;
-
-function isActive(item: NavItem, pathname: string) {
-  const path = pathname.replace(/\/$/, "") || "/";
-  return path === item.href;
-}
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -71,10 +64,7 @@ export function SiteHeader() {
                     href={item.href}
                     standalone={item.standalone}
                     aria-current={active ? "page" : undefined}
-                    className={cn(
-                      "rounded-full px-3.5 py-2 font-display text-[17px] font-medium text-paper/85 transition-colors duration-150 hover:text-cyan",
-                      active && "text-cyan underline decoration-blue decoration-[3px] underline-offset-[7px]",
-                    )}
+                    className="nav-link rounded-full px-3.5 py-2 font-display text-[17px] font-medium"
                   >
                     {item.label}
                   </NavLink>
@@ -120,10 +110,7 @@ export function SiteHeader() {
                       standalone={item.standalone}
                       aria-current={active ? "page" : undefined}
                       onClick={() => setOpen(false)}
-                      className={cn(
-                        "block py-2 font-display text-[40px] leading-tight font-semibold text-paper",
-                        active && "text-cyan",
-                      )}
+                      className="nav-link block py-2 font-display text-[40px] leading-tight font-semibold"
                     >
                       {item.label}
                     </NavLink>

@@ -12,12 +12,14 @@ Copy lives in `content/*.json`, not in components. Edit those files to change te
 
 ## Base City
 
+**`public/base-city/` is synced from the Base City repo; edit it there.** Each push to that repo copies its files into this folder (using a `CASHY_SITE_TOKEN` secret kept in the Base City repo), and GitHub Pages redeploys. Changes made here are overwritten.
+
 Base City is a standalone, full-screen 3D page: `public/base-city/index.html` (three.js, one file). It is served as-is at `/base-city/`, with no site header or footer, and its "← Exit city" link goes back home. Links into it are plain links (the nav item has `"standalone": true`), because it is not part of the app.
 
 - **Building texts:** `public/base-city/data/base-city.json`. One entry per building: `{ "id", "name", "tag", "text", "withCashy", "link", "linkLabel" }`. Any field can be left out (no `link` means no "Visit website" button). Only `http(s)` links are shown.
 - **three.js** is pinned at `0.160.0` in `public/base-city/vendor/` (copied from the npm package, licence included), so the page loads nothing from a CDN except its two Google fonts.
 - **Local preview:** `next dev` does not serve folder index pages, so open `http://localhost:3000/base-city/index.html`. The built site (`out/`) serves `/base-city/` normally.
-- **Demo data:** the MSTR counter and Payday figures are demo numbers and are labelled as such until the real Payday feed exists.
+- **Demo data:** the printed-to-holders counter and Payday figures are demo numbers and are labelled as such until the real Payday feed exists.
 
 ### Adding a new collaboration
 

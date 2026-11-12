@@ -9,8 +9,8 @@ type HypeProps = {
   points: { title: string; text: string }[];
 };
 
-/** Each point gets one of the site's three lights along its top edge. */
-const accents = ["border-t-cyan", "border-t-blue", "border-t-magenta"];
+/** Each point gets one of the three Base blues along its top edge. */
+const accents = ["border-t-blue", "border-t-blue-mid", "border-t-blue-pale"];
 
 export function Hype({ eyebrow, title, lede, points }: HypeProps) {
   return (

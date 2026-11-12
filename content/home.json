@@ -4,7 +4,7 @@
     "videoSrc": "/video/hero.mp4",
     "poster": "/video/hero-poster.jpg",
     "title": "CASHY",
-    "tagline": "Cash in. MSTR out.",
+    "tagline": "Cash in. NVDA out.",
     "scrollHint": "SCROLL",
     "enter": {
       "label": "Enter Base City",
@@ -16,11 +16,38 @@
       "One banknote.",
       "One very quiet city."
     ],
-    "support": [
+    "story": [
       "Base City went quiet. The builders moved on, the streets emptied, and the lights in the towers went out one by one.",
-      "Then a single banknote walked in: Cashy, the Base Note, denomination 8453, the chain ID of Base itself. He isn’t here to be spent. He’s here to rebuild. Every $CASHY trade runs on Feel.cash, in a pool paired with MSTR, Strategy’s stock, and 0.85% of every trade goes back to holders, paid in MSTR stock, about once a day. Each payout is a Payday, and each Payday turns another light back on in Base City.",
+      "Then a single banknote walked in. Cashy, the Base Note, denomination 8453: the chain ID of Base itself. He isn’t here to be spent. He’s here to rebuild.",
+      "Every $CASHY trade runs on Feel.cash, in a pool paired with NVDAc, Coinbase’s tokenized Nvidia stock. 2.14% of every trade goes back to holders, paid in NVDA, about once a day. Each payout is a Payday, and each Payday turns another light back on in Base City.",
       "As more Base projects move in, they get their own building, and their characters take over the streets. One block at a time, the quiet city becomes the Base Renaissance."
-    ]
+    ],
+    "pill": "denomination 8453",
+    "mascot": "/art/cashy-raygun.webp",
+    "mascotAlt": "Cashy, a banknote in sunglasses and a leather jacket, grinning and holding a ray gun.",
+    "printerLabel": "NVDA",
+    "why": {
+      "eyebrow": "WHY NVDA",
+      "cards": [
+        {
+          "title": "Everyone knows it",
+          "text": "Nvidia is a household name. Nobody needs it explained, from a trader in New York to a student in Lagos."
+        },
+        {
+          "title": "Same green",
+          "text": "Nvidia green, Cashy green. The note was already wearing the colour."
+        },
+        {
+          "title": "The AI money machine",
+          "text": "Nvidia is the name everyone connects with the AI boom. Cashy shares its trading fees in it."
+        },
+        {
+          "title": "Built on chips",
+          "text": "Base City’s games, the arcade and every AI idea run on chips. The Chip Factory is where Cashy makes them."
+        }
+      ],
+      "note": "Paired with NVDAc on Feel.cash. Not affiliated with Nvidia."
+    }
   },
   "skyline": {
     "word": "CASHY",
@@ -30,19 +57,19 @@
   "hype": {
     "eyebrow": "The Base Note · 8453",
     "title": "Base City is waking up",
-    "lede": "Cashy moved in to switch the lights back on. Every trade on Feel.cash keeps the city running, and the fees are shared with holders in MSTR stock.",
+    "lede": "Cashy moved in to switch the lights back on. Every trade on Feel.cash keeps the city running, and the fees are shared with holders in NVDA stock.",
     "points": [
       {
         "title": "Every trade prints",
-        "text": "0.85% of every Cashy trade goes to holders, paid in MSTR stock."
+        "text": "2.14% of every Cashy trade goes to holders, paid in NVDA stock."
       },
       {
-        "title": "Payday is MSTR day",
+        "title": "Payday is NVDA day",
         "text": "Payouts go out about daily. Hold at least 100,000 CASHY to qualify."
       },
       {
         "title": "Built on Base",
-        "text": "Launched on Feel.cash and paired with MSTRc. Where people meet stocks, on Base."
+        "text": "Launched on Feel.cash and paired with NVDAc. Where people meet stocks, on Base."
       }
     ]
   }

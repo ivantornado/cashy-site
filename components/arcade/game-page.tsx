@@ -13,7 +13,7 @@ export function GamePage({ game }: { game: Game }) {
 
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
           <h1 className="neon-word text-[clamp(2.25rem,6vw,3.5rem)]">{game.title}</h1>
-          <Link href="/arcade" className="font-display text-lg font-medium text-paper underline decoration-cyan decoration-2 underline-offset-4 transition-colors duration-150 hover:text-cyan">
+          <Link href="/arcade" className="text-link text-lg">
             {pages.arcade.backLabel}
           </Link>
         </div>

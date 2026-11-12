@@ -9,10 +9,7 @@ export function FollowLink({ className }: { className?: string }) {
       href={site.xUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={cn(
-        "inline-flex items-center justify-center rounded-full border-2 border-paper/40 font-display font-semibold whitespace-nowrap text-paper transition-colors duration-150 hover:border-cyan hover:text-cyan",
-        className,
-      )}
+      className={cn("btn-outline", className)}
     >
       {site.followLabel}
     </a>

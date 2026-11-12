@@ -6,11 +6,11 @@
 import { asset } from "@/lib/utils";
 
 const INK = "#04060f";
-const CYAN = "#27e7ff";
-const BLUE = "#024ff6";
-const PINK = "#ff2bd6";
+const PALE = "#c7c7ff"; // pale Base tint
+const BLUE = "#0000ff";
+const MID = "#4d4dff"; // mid Base tint
 const GREEN = "#a9dd8c";
-const VIOLET = "#8b3dff";
+const VIOLET = "#4d4dff";
 
 type LayerProps = { className?: string };
 
@@ -92,7 +92,7 @@ function Buildings({ buildings, style, seed }: { buildings: Building[]; style: S
       ))}
       {style.rim && (
         <>
-          <path d={rimLeft} stroke={CYAN} strokeWidth="2.5" strokeOpacity="0.7" fill="none" />
+          <path d={rimLeft} stroke={PALE} strokeWidth="2.5" strokeOpacity="0.7" fill="none" />
           <path d={rimTop} stroke={BLUE} strokeWidth="2.5" strokeOpacity="0.85" fill="none" />
         </>
       )}
@@ -159,8 +159,8 @@ export function Moon({ className }: LayerProps) {
     <Canvas className={className}>
       <defs>
         <radialGradient id="moon-glow">
-          <stop offset="0.45" stopColor="#024ff6" stopOpacity="0.55" />
-          <stop offset="1" stopColor="#024ff6" stopOpacity="0" />
+          <stop offset="0.45" stopColor="#0000ff" stopOpacity="0.55" />
+          <stop offset="1" stopColor="#0000ff" stopOpacity="0" />
         </radialGradient>
         <clipPath id="moon-clip">
           <circle cx="800" cy="330" r="215" />
@@ -194,7 +194,7 @@ export function FarSkyline({ className }: LayerProps) {
           outlineWidth: 2.5,
           windows: [
             { colour: "#7f7bea", weight: 3 },
-            { colour: "#c78bff", weight: 1 },
+            { colour: "#c7c7ff", weight: 1 },
           ],
           window: { w: 6, h: 9, gapX: 15, gapY: 21, lit: 0.26 },
         }}
@@ -224,9 +224,9 @@ export function MidSkyline({ className }: LayerProps) {
           outline: INK,
           outlineWidth: 3.5,
           windows: [
-            { colour: CYAN, weight: 3 },
-            { colour: "#ffb8f0", weight: 4 },
-            { colour: "#7ea8ff", weight: 3 },
+            { colour: PALE, weight: 3 },
+            { colour: "#ffffff", weight: 4 },
+            { colour: "#4d4dff", weight: 3 },
             { colour: BLUE, weight: 1 },
           ],
           window: { w: 9, h: 13, gapX: 22, gapY: 29, lit: 0.34 },
@@ -306,8 +306,8 @@ export function NearSkyline({ className }: LayerProps) {
     <Canvas className={className}>
       <defs>
         <Halo id="near-blue" colour={BLUE} />
-        <Halo id="near-cyan" colour={CYAN} />
-        <Halo id="near-pink" colour={PINK} />
+        <Halo id="near-pale" colour={PALE} />
+        <Halo id="near-mid" colour={MID} />
         <linearGradient id="near-fade" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#05070d" stopOpacity="0" />
           <stop offset="1" stopColor="#05070d" stopOpacity="0.9" />
@@ -315,11 +315,11 @@ export function NearSkyline({ className }: LayerProps) {
       </defs>
 
       <ellipse cx="640" cy="590" rx="120" ry="210" fill="url(#near-blue)" />
-      <ellipse cx="955" cy="640" rx="110" ry="200" fill="url(#near-cyan)" />
-      <ellipse cx="225" cy="560" rx="120" ry="220" fill="url(#near-pink)" opacity="0.7" />
+      <ellipse cx="955" cy="640" rx="110" ry="200" fill="url(#near-pale)" />
+      <ellipse cx="225" cy="560" rx="120" ry="220" fill="url(#near-mid)" opacity="0.7" />
       <ellipse cx="1240" cy="510" rx="120" ry="230" fill="url(#near-blue)" />
-      <ellipse cx="380" cy="470" rx="110" ry="210" fill="url(#near-cyan)" />
-      <ellipse cx="1390" cy="520" rx="110" ry="160" fill="url(#near-pink)" opacity="0.7" />
+      <ellipse cx="380" cy="470" rx="110" ry="210" fill="url(#near-pale)" />
+      <ellipse cx="1390" cy="520" rx="110" ry="160" fill="url(#near-mid)" opacity="0.7" />
 
       <path d="M70 215v-80M58 158h24M1540 205v-90M1526 140h28M380 290v-46M1240 320v-54" stroke={INK} strokeWidth="5" fill="none" />
       <circle cx="70" cy="133" r="5" fill={BLUE} />
@@ -334,9 +334,9 @@ export function NearSkyline({ className }: LayerProps) {
           outline: INK,
           outlineWidth: 4.5,
           windows: [
-            { colour: "#ffa6ec", weight: 5 },
-            { colour: "#38e8d8", weight: 3 },
-            { colour: "#ff8ae2", weight: 1 },
+            { colour: "#c7c7ff", weight: 5 },
+            { colour: "#4d4dff", weight: 3 },
+            { colour: "#ffffff", weight: 1 },
           ],
           window: { w: 13, h: 19, gapX: 30, gapY: 39, lit: 0.3 },
           rim: true,
@@ -344,20 +344,20 @@ export function NearSkyline({ className }: LayerProps) {
       />
 
       <VerticalSign x={624} y={486} w={60} text="キャッシー" colour={BLUE} flicker="neon-flicker" />
-      <VerticalSign x={930} y={546} w={54} text="8453" colour={CYAN} />
-      <VerticalSign x={196} y={432} w={56} text="アーケード" colour={PINK} />
-      <VerticalSign x={350} y={322} w={58} text="PRINTER" colour={CYAN} />
+      <VerticalSign x={930} y={546} w={54} text="8453" colour={PALE} />
+      <VerticalSign x={196} y={432} w={56} text="アーケード" colour={MID} />
+      <VerticalSign x={350} y={322} w={58} text="PRINTER" colour={PALE} />
       <VerticalSign x={1212} y={352} w={58} text="ARCADE" colour={BLUE} flicker="neon-flicker-late" />
-      <VerticalSign x={1366} y={458} w={52} text="バンク" colour={PINK} />
+      <VerticalSign x={1366} y={458} w={52} text="バンク" colour={MID} />
 
       <Billboard x={18} y={250} w={112} h={74} colour={GREEN}>
         <BillboardWord x={74} y={287} size={52} fill={GREEN}>$</BillboardWord>
       </Billboard>
-      <Billboard x={472} y={488} w={110} h={50} colour={CYAN}>
-        <BillboardWord x={527} y={513} size={30} fill={CYAN}>CASHY</BillboardWord>
+      <Billboard x={472} y={488} w={110} h={50} colour={PALE}>
+        <BillboardWord x={527} y={513} size={30} fill={PALE}>CASHY</BillboardWord>
       </Billboard>
-      <Billboard x={1030} y={540} w={118} h={48} colour={PINK}>
-        <BillboardWord x={1089} y={564} size={30} fill={PINK}>$CASHY</BillboardWord>
+      <Billboard x={1030} y={540} w={118} h={48} colour={MID}>
+        <BillboardWord x={1089} y={564} size={30} fill={MID}>$CASHY</BillboardWord>
       </Billboard>
       <Billboard x={1482} y={238} w={120} h={76} colour={BLUE}>
         <BillboardWord x={1542} y={276} size={36} fill={BLUE}>8453</BillboardWord>
@@ -383,8 +383,8 @@ export function Rooftop({ mascot, className }: LayerProps & { mascot: string }) 
           <stop offset="1" stopColor="#05070d" />
         </linearGradient>
         <linearGradient id="roof-rim" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stopColor={CYAN} />
-          <stop offset="0.5" stopColor="#7ea8ff" />
+          <stop offset="0" stopColor={PALE} />
+          <stop offset="0.5" stopColor="#4d4dff" />
           <stop offset="1" stopColor={BLUE} />
         </linearGradient>
         <radialGradient id="roof-backlight">
@@ -406,7 +406,7 @@ export function Rooftop({ mascot, className }: LayerProps & { mascot: string }) 
           <path d="M198 676V575l77-44 77 44v101z" fill="#16204f" />
           <path d="M198 575h154" fill="none" />
         </g>
-        <path d="M201 672V577l74-42" stroke={CYAN} strokeWidth="2.5" fill="none" strokeOpacity="0.8" />
+        <path d="M201 672V577l74-42" stroke={PALE} strokeWidth="2.5" fill="none" strokeOpacity="0.8" />
       </g>
 
       {/* Vent pipe, visible on phones too */}
@@ -414,7 +414,7 @@ export function Rooftop({ mascot, className }: LayerProps & { mascot: string }) 
         <rect x="610" y="688" width="30" height="84" fill="#1a2356" />
         <rect x="602" y="674" width="46" height="20" rx="4" fill="#232d66" />
       </g>
-      <path d="M613 772v-80" stroke={CYAN} strokeWidth="2.5" strokeOpacity="0.7" fill="none" />
+      <path d="M613 772v-80" stroke={PALE} strokeWidth="2.5" strokeOpacity="0.7" fill="none" />
 
       {/* Air-con units on the right, the first one reads on phones */}
       <g stroke={INK} strokeWidth="4.5">
@@ -434,7 +434,7 @@ export function Rooftop({ mascot, className }: LayerProps & { mascot: string }) 
       <path d="M0 826h1600M0 856h1600M120 798v28M360 798v28M600 798v28M840 798v28M1080 798v28M1320 798v28M240 826v30M480 826v30M720 826v30M960 826v30M1200 826v30M1440 826v30" stroke="#04060f" strokeWidth="3" opacity="0.8" fill="none" />
 
       {/* Wet ledge catching the neon */}
-      <path d="M690 781h70M840 781h96M480 781h110M1010 781h60" stroke={CYAN} strokeWidth="3" strokeLinecap="round" opacity="0.55" />
+      <path d="M690 781h70M840 781h96M480 781h110M1010 781h60" stroke={PALE} strokeWidth="3" strokeLinecap="round" opacity="0.55" />
       <path d="M740 790h52M880 790h40M1100 790h90M360 790h70" stroke={BLUE} strokeWidth="3" strokeLinecap="round" opacity="0.55" />
 
       <ellipse cx="800" cy={LEDGE_TOP + 11} rx="178" ry="11" fill="url(#roof-shadow)" />

@@ -11,7 +11,7 @@ export function GameFrame({ src, title }: { src: string; title: string }) {
 
   return (
     <div
-      className="mx-auto overflow-hidden rounded-2xl border-[3px] border-blue bg-ink shadow-[0_4px_36px_rgb(2_79_246_/_0.5)]"
+      className="mx-auto overflow-hidden rounded-2xl border-[3px] border-blue bg-ink shadow-[0_4px_36px_rgb(0_0_255_/_0.45)]"
       style={{ width: "min(100%, calc((100svh - 6.5rem) * 706 / 720))", aspectRatio: "706 / 720" }}
       onClick={() => frame.current?.focus()}
     >
